@@ -29,18 +29,13 @@ set updatetime=50
 
 set shortmess+=c
 
+" plugins
+runtime ./plug.vim
 
+" Keymaps
+runtime ./maps.vim
 
-
-call plug#begin('~/.vim/plugged')
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-Plug 'gruvbox-community/gruvbox'
-call plug#end()
-
-colorscheme gruvbox
+colorscheme NeoSolarized
 highlight Normal guibg=none
 
 fun! TrimWhitespace()
