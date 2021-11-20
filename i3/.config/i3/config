@@ -197,4 +197,5 @@ bindsym $mod+Ctrl+0  exec amixer -D pulse set Master 3%+
 bindsym $mod+Ctrl+m exec amixer -D pulse sset Master toggle
 
 # Transparent Background
-exec --no-startup-id picom -CGb
+exec --no-startup-id feh --bg-fill ~/Desktop/Wallpaper/black-cat.jpg
+exec_always --no-startup-id picom
