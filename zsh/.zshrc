@@ -10,7 +10,6 @@ export ZSH="/home/ebrain/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -100,6 +99,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# make tmux default
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+fi
+
+# custom
 
 export PATH=$PATH:~/Android-Studio/bin
 export PATH=$PATH:~/Android/Sdk/platform-tools

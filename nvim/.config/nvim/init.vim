@@ -14,6 +14,7 @@ set undofile
 set incsearch
 set termguicolors
 set scrolloff=8
+set sidescrolloff=12
 set noshowmode
 set completeopt=menuone,noinsert,noselect
 set colorcolumn=80
