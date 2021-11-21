@@ -100,12 +100,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# make tmux default
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux attach -t default || tmux new -s default
-fi
-
 # custom
+
+# make tmux default
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#     tmux attach -t default || tmux new -s default
+# fi
 
 export PATH=$PATH:~/Android-Studio/bin
 export PATH=$PATH:~/Android/Sdk/platform-tools
