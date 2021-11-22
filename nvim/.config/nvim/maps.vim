@@ -10,6 +10,8 @@ nnoremap <C-k> <C-w>kk<cr>
 nnoremap <C-l> <C-w>lk<cr>
 
 inoremap jj <Esc>
+vmap ++ <plug>NERDCommenterToggle
+nmap ++ <plug>NERDCommenterToggle
 
 " NerdTree Shortcuts
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -32,7 +34,7 @@ nnoremap <silent> <space>k  :CocPrev<CR>
 " Resume latest coc list
 noremap <silent> <space>p  :CocListResume<CR>
 " Open Fix Menu
-noremap <silent> <space>l :CocFix<CR>
+noremap <silent> <space>f :CocFix<CR>
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
@@ -86,10 +88,6 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Remap for rename current word
 nmap <F2> <Plug>(coc-rename)
-
-" Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.

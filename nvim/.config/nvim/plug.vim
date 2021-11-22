@@ -22,6 +22,10 @@ if has("nvim")
 
     " NerdTree
     Plug 'preservim/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'ryanoasis/vim-devicons'
+
+    Plug 'preservim/nerdcommenter'
 
     " LSP
 "    Plug 'neovim/nvim-lspconfig'

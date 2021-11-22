@@ -52,11 +52,8 @@ augroup MY_AUTO_COMMANDS
     autocmd BufWritePre * :call TrimWhitespace()
 augroup END
 
-" run prettier on save
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-" ctrlp
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:NERDTreeIgnore = ['^node_modules$','.git$','.vscode']
 
 " coc config
 let g:coc_global_extensions = [
@@ -68,7 +65,6 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ ]
 
-
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -79,6 +75,9 @@ augroup mygroup
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
