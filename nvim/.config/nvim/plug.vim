@@ -20,6 +20,9 @@ if has("nvim")
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+    " NerdTree
+    Plug 'preservim/nerdtree'
+
     " LSP
 "    Plug 'neovim/nvim-lspconfig'
 "    Plug 'glepnir/lspsaga.nvim'
