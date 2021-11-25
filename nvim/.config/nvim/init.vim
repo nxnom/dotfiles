@@ -4,7 +4,7 @@ set relativenumber
 set nohlsearch
 set hidden
 set noerrorbells
-set nu
+set number
 set nowrap
 set smartcase
 set noswapfile
@@ -16,7 +16,7 @@ set termguicolors
 set scrolloff=8
 set sidescrolloff=12
 set noshowmode
-set completeopt=menuone,noinsert,noselect
+"set completeopt=menuone,noinsert,noselect
 set colorcolumn=80
 set signcolumn=yes
 set tabstop=2 softtabstop=2
@@ -26,11 +26,11 @@ set smartindent
 " use system clipboard
 set clipboard=unnamed
 
-set cmdheight=2
 set updatetime=50
 set shortmess+=c
 
-let NERDTreeShowHidden=1
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " plugins
 runtime ./plug.vim
@@ -51,21 +51,6 @@ augroup MY_AUTO_COMMANDS
     autocmd!
     autocmd BufWritePre * :call TrimWhitespace()
 augroup END
-
-" Airline Theme Setting
-let g:airline_theme='selenized'
-
-let g:NERDTreeIgnore = ['^node_modules$','.git$','.vscode']
-
-" coc config
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-tsserver',
-  \ 'coc-eslint',
-  \ 'coc-prettier',
-  \ 'coc-json',
-  \ ]
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -89,5 +74,23 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Start Variables ---
+" Show hidden files (dotfiles) in NERDTree Plugin
+let NERDTreeShowHidden=1
+
+" Airline Theme Setting
+let g:airline_theme='selenized'
+
+let g:NERDTreeIgnore = ['^node_modules$','.git$','.vscode']
+
+" coc config
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ ]
+
