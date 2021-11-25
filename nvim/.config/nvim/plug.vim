@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'cohama/lexima.vim'
+Plug 'vim-airline/vim-airline'
 
 if has("nvim")
 "    Plug 'windwp/nvim-autopairs'

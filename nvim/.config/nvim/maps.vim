@@ -15,7 +15,7 @@ nmap ++ <plug>NERDCommenterToggle
 
 " NerdTree Shortcuts
 nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTree<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
