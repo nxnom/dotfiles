@@ -52,6 +52,8 @@ augroup MY_AUTO_COMMANDS
     autocmd BufWritePre * :call TrimWhitespace()
 augroup END
 
+" Airline Theme Setting
+let g:airline_theme='selenized'
 
 let g:NERDTreeIgnore = ['^node_modules$','.git$','.vscode']
 
