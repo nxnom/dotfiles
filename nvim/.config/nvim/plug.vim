@@ -9,6 +9,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'cohama/lexima.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'dart-lang/dart-vim-plugin'
 
 if has("nvim")
 "    Plug 'windwp/nvim-autopairs'

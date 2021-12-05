@@ -83,7 +83,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+   export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
@@ -107,8 +107,15 @@ source $ZSH/oh-my-zsh.sh
 #     tmux attach -t default || tmux new -s default
 # fi
 
-export PATH=$PATH:~/Android-Studio/bin
-export PATH=$PATH:~/Android/Sdk/platform-tools
+#export PATH=$PATH:~/Android-Studio/bin
+export ANDROID_SDK_ROOT=~/Android/cmdline-tools/latest
+export PATH=$PATH:${ANDROID_SDK_ROOT}/bin
+export PATH=$PATH:~/Android/platform-tools
+#export PATH=$PATH:~/Android/tools
+export PATH=$PATH:~/Android/emulator
+
+alias android="emulator -avd android"
+alias sdk="sdkmanager --verbose"
 
 alias vim="nvim"
 

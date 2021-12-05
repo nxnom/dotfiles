@@ -92,5 +92,12 @@ let g:coc_global_extensions = [
   \ 'coc-eslint',
   \ 'coc-prettier',
   \ 'coc-json',
+  \ 'coc-flutter',
+  \ 'coc-emmet',
+  \ 'coc-css',
+  \ 'coc-html',
+  \ 'coc-json',
   \ ]
 
+let g:dart_format_onsave = 1
+let g:dartfmt_options = ['--fix','--line-length 120']

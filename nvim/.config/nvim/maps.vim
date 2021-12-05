@@ -1,5 +1,6 @@
-let leader = ' '
-" Default Remaps
+let leader=" "
+
+" Move line up and down in visual mode
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
@@ -9,7 +10,10 @@ nnoremap <C-j> <C-w>jk<cr>
 nnoremap <C-k> <C-w>kk<cr>
 nnoremap <C-l> <C-w>lk<cr>
 
+" trigger Esc
 inoremap jj <Esc>
+
+" Change Code to comment
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 
@@ -20,30 +24,30 @@ nnoremap <C-b> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 " Coc Shortcuts
-nnoremap <silent> <space>a  :CocList diagnostics<cr>
-nnoremap <silent> <space>e  :CocList extensions<cr>
-nnoremap <silent> <space>c  :CocList commands<cr>
+nnoremap <silent> <space>ca  :CocList diagnostics<cr>
+nnoremap <silent> <space>ce  :CocList extensions<cr>
+nnoremap <silent> <space>cc  :CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :CocList outline<cr>
+nnoremap <silent> <space>co  :CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>s  :CocList -I symbols<cr>
+nnoremap <silent> <space>cs  :CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :CocNext<CR>
+nnoremap <silent> <space>cj  :CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :CocPrev<CR>
+nnoremap <silent> <space>ck  :CocPrev<CR>
 " Resume latest coc list
-noremap <silent> <space>p  :CocListResume<CR>
+noremap <silent> <space>cp  :CocListResume<CR>
 " Open Fix Menu
-noremap <silent> <space>f :CocFix<CR>
+noremap <silent> <space>ff :CocFix<CR>
+" Fix autofix problem of current line
+nmap <silent> ff  <Plug>(coc-fix-current)
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+xmap <space>a  <Plug>(coc-codeaction-selected)
+nmap <space>a  <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <space>ac  <Plug>(coc-codeaction)
 
 " Create mappings for function text object, requires document symbols feature of languageserver.
 xmap if <Plug>(coc-funcobj-i)
