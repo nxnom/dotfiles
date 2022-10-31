@@ -5,9 +5,9 @@ if (not status) then return end
 
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  if client.server_capabilities.documentFormattingProvider then
-    vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
-  end
+  -- if client.server_capabilities.documentFormattingProvider then
+  --   vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+  -- end
 end
 
 -- Set up completion using nvim_cmp with LSP source
@@ -22,8 +22,8 @@ nvim_lsp.flow.setup {
 
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" },
+  -- filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
+  -- cmd = { "typescript-language-server", "--stdio" },
   capabilities = capabilities
 }
 
@@ -49,7 +49,7 @@ nvim_lsp.sumneko_lua.setup {
   },
 }
 
-nvim_lsp.tailwindcss.setup {}
+-- nvim_lsp.tailwindcss.setup {}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {

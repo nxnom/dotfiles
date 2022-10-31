@@ -11,6 +11,7 @@ packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use 'williamboman/mason.nvim' -- easy LSP, formatter installer
+  use 'williamboman/mason-lspconfig.nvim'
 
   use {
     'svrana/neosolarized.nvim',
@@ -18,7 +19,6 @@ packer.startup(function(use)
   }
 
   use 'nvim-lualine/lualine.nvim' -- Statusline
-  use 'williamboman/mason-lspconfig.nvim'
 
   use 'neovim/nvim-lspconfig' -- LSP
   use 'onsails/lspkind.nvim' -- vs-code like pictograms
@@ -51,4 +51,8 @@ packer.startup(function(use)
   -- git
   use 'lewis6991/gitsigns.nvim'
   use 'dinhhuy258/git.nvim' -- For git blame & browse
+
+  -- Toggle Comments
+  use 'numToStr/Comment.nvim'
+  use 'JoosepAlviste/nvim-ts-context-commentstring' -- For JSX Comments
 end)
