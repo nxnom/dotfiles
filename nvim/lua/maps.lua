@@ -8,13 +8,13 @@ keymap.set('n', '+', '<C-a>')
 keymap.set('n', '-', '<C-x>')
 
 -- Delete a world backwords
-keymap.set('n', 'dw', 'vb"_d')
+-- keymap.set('n', 'dw', 'vb"_d')
 
 -- Select all
-keymap.set('n', '<C-a>', 'gg<S-v>G')
+-- keymap.set('n', '<C-a>', 'gg<S-v>G')
 
 -- New tab
-keymap.set('n', 'te', ':tabedit<Return>', { silent = true })
+keymap.set('n', 'st', ':tabedit<Return>', { silent = true })
 
 -- Split windows
 keymap.set('n', 'ss', ':split<Return><C-w>w', { silent = true })

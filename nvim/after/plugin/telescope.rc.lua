@@ -16,12 +16,27 @@ telescope.setup {
         ["q"] = actions.close
       },
     },
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--hidden',
+      '-uu' -- **This is the setting not being respected**
+    },
+    file_ignore_patterns = {
+      ".git", "node_modules", "build", "dist", "yarn.lock", "package-lock.json"
+    }
   },
   extensions = {
     file_browser = {
       theme = "dropdown",
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
+      hidden = true,
       mappings = {
         -- your custom insert mode mappings
         ["i"] = {
