@@ -28,6 +28,8 @@ packer.startup(function(use)
   use 'hrsh7th/nvim-cmp' -- Completion
   use 'L3MON4D3/Luasnip' -- Snippet "nvim-cmp use this"
 
+  use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
+
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
