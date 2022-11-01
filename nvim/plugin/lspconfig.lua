@@ -4,10 +4,10 @@ local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
 
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  -- if client.server_capabilities.documentFormattingProvider then
-  --   vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
-  -- end
+local auto_format = function(client, bufnr)
+  if client.server_capabilities.documentFormattingProvider then
+    vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+  end
 end
 
 -- Set up completion using nvim_cmp with LSP source
@@ -16,21 +16,19 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(
 )
 
 nvim_lsp.flow.setup {
-  on_attach = on_attach,
   capabilities = capabilities
 }
 
 nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
   capabilities = capabilities
 }
 
 nvim_lsp.sourcekit.setup {
-  on_attach = on_attach,
+  on_attach = auto_format,
 }
 
 nvim_lsp.sumneko_lua.setup {
-  on_attach = on_attach,
+  on_attach = auto_format,
   settings = {
     Lua = {
       diagnostics = {
