@@ -2,6 +2,7 @@ require('base')
 require('highlights')
 require('maps')
 require('plugins')
+require('commands')
 
 -- Merge yy yank clipboard with system clipboard
 local has = function(x)
@@ -17,3 +18,5 @@ end
 if is_win then
   require('windows')
 end
+
+print(vim.bo.filetype)

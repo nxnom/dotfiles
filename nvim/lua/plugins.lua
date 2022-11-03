@@ -13,10 +13,7 @@ packer.startup(function(use)
   use 'williamboman/mason.nvim' -- easy LSP, formatter installer
   use 'williamboman/mason-lspconfig.nvim'
 
-  use {
-    'svrana/neosolarized.nvim',
-    requires = { 'tjdevries/colorbuddy.nvim' }
-  }
+  -- use { 'svrana/neosolarized.nvim', requires = 'tjdevries/colorbuddy.nvim' }
 
   use 'nvim-lualine/lualine.nvim' -- Statusline
 
@@ -28,7 +25,7 @@ packer.startup(function(use)
   use 'hrsh7th/nvim-cmp' -- Completion
   use 'L3MON4D3/Luasnip' -- Snippet "nvim-cmp use this"
 
-  use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
+  use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -57,4 +54,9 @@ packer.startup(function(use)
   -- Toggle Comments
   use 'numToStr/Comment.nvim'
   use 'JoosepAlviste/nvim-ts-context-commentstring' -- For JSX Comments
+
+
+  -- Themes
+  use 'projekt0n/github-nvim-theme'
+  -- use { "ellisonleao/gruvbox.nvim" }
 end)

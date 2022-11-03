@@ -28,15 +28,17 @@ telescope.setup {
       '-uu' -- **This is the setting not being respected**
     },
     file_ignore_patterns = {
-      ".git", "node_modules", "build", "dist", "yarn.lock", "package-lock.json"
+      ".git/", "node_modules", "build", "dist", "yarn.lock", "package-lock.json"
     }
   },
   extensions = {
     file_browser = {
-      theme = "dropdown",
+      theme = "ivy",
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
       hidden = true,
+      grouped = true,
+      initial_mode = "normal",
       mappings = {
         -- your custom insert mode mappings
         ["i"] = {
@@ -86,8 +88,7 @@ vim.keymap.set("n", "sf", function()
     respect_gitignore = false,
     hidden = true,
     grouped = true,
-    previewer = false,
     initial_mode = "normal",
-    layout_config = { height = 40 }
+    -- layout_config = { height = 40 }
   })
 end)
