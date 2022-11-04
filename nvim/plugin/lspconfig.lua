@@ -4,7 +4,7 @@ local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
 
 -- after the language server attaches to the current buffer
-local auto_format = function(client, bufnr)
+local auto_format = function(client)
   if client.server_capabilities.documentFormattingProvider then
     vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
   end
@@ -20,6 +20,11 @@ nvim_lsp.flow.setup {
 }
 
 nvim_lsp.tsserver.setup {
+  init_options = {
+    preferences = {
+      disableSuggestions = true,
+    },
+  },
   capabilities = capabilities
 }
 

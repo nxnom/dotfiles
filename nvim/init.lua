@@ -18,5 +18,3 @@ end
 if is_win then
   require('windows')
 end
-
-print(vim.bo.filetype)
