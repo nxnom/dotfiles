@@ -55,6 +55,8 @@ packer.startup(function(use)
   use 'numToStr/Comment.nvim'
   use 'JoosepAlviste/nvim-ts-context-commentstring' -- For JSX Comments
 
+  -- Fold Codes
+  use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
 
   -- Themes
   use 'projekt0n/github-nvim-theme'

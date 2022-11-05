@@ -45,20 +45,3 @@ keymap.set('v', '<C-s>', function()
   -- print(result)
 
 end)
-
-
--- Run Current Open JS file
-keymap.set('n', '<Leader>8', function()
-  local filetype = vim.bo.filetype
-
-  if filetype ~= 'javascript' then
-    vim.api.nvim_notify("This command only support on javascript file", vim.log.levels.ERROR, {})
-    return
-  end
-
-  local current_file = vim.fn.expand('%:p')
-  local f = assert(io.popen("node " .. current_file, "r"))
-  local s = assert(f:read("*a"))
-  f:close()
-  vim.api.nvim_notify(s, vim.log.levels.INFO, {})
-end)
