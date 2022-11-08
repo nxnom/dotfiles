@@ -5,13 +5,14 @@ vim.api.nvim_create_user_command('Silicon', function()
   local f = assert(io.popen("silicon --from-clipboard --output ~/Screenshot/Silicon/$(date +%Y%m%d%H%M%S).png -l " ..
     filetype, "r"))
 
-  if (f == nil) then
-    print('Screenshot success')
+  local s = assert(f:read("*a"))
+  f:close()
+
+  if (s == '') then
+    vim.api.nvim_notify('Screenshot success', vim.log.levels.INFO, {})
     return
   end
 
-  local s = assert(f:read("*a"))
-  f:close()
   vim.api.nvim_notify(s, vim.log.levels.INFO, {})
 end, {})
 
