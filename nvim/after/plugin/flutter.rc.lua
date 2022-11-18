@@ -1,6 +1,17 @@
 local status, flutter = pcall(require, "flutter-tools")
 if (not status) then return end
 
+local on_attach = function()
+  -- saved on format
+  vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+
+  -- keymaps
+  vim.keymap.set('n', '<Leader>frs', '<Cmd>FlutterRestart<CR>', {})
+  vim.keymap.set('n', '<Leader>fcl', '<Cmd>FlutterLogClear<CR>', {})
+  vim.keymap.set('n', '<Leader>frr', '<Cmd>FlutterRun<CR>', {})
+  vim.keymap.set('n', '<Leader>fqq', '<Cmd>FlutterQuit<CR>', {})
+end
+
 flutter.setup {
   ui = {
     border = "rounded",
@@ -52,11 +63,7 @@ flutter.setup {
       virtual_text_str = "■", -- the virtual text character to highlight
     },
     -- analysisExcludedFolders = {"<path-to-flutter-sdk-packages>"},
-    on_attach = function(client)
-      if client.server_capabilities.documentFormattingProvider then
-        vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
-      end
-    end,
+    on_attach = on_attach,
     capabilities = require('cmp_nvim_lsp').default_capabilities(
       vim.lsp.protocol.make_client_capabilities()
     ),
