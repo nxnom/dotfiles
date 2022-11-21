@@ -6,10 +6,11 @@ local on_attach = function()
   vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 
   -- keymaps
-  vim.keymap.set('n', '<Leader>frs', '<Cmd>FlutterRestart<CR>', {})
-  vim.keymap.set('n', '<Leader>fcl', '<Cmd>FlutterLogClear<CR>', {})
-  vim.keymap.set('n', '<Leader>frr', '<Cmd>FlutterRun<CR>', {})
-  vim.keymap.set('n', '<Leader>fqq', '<Cmd>FlutterQuit<CR>', {})
+  vim.keymap.set('n', '<Leader>fo', '<Cmd>FlutterOutlineToggle<CR>', {})
+  vim.keymap.set('n', '<Leader>fr', '<Cmd>FlutterRestart<CR>', {})
+  vim.keymap.set('n', '<Leader>fc', '<Cmd>FlutterLogClear<CR>', {})
+  vim.keymap.set('n', '<Leader>fs', '<Cmd>FlutterRun<CR>', {})
+  vim.keymap.set('n', '<Leader>fq', '<Cmd>FlutterQuit<CR>', {})
 end
 
 flutter.setup {

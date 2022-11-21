@@ -20,7 +20,10 @@ keymap.set('n', 'st', ':tabedit<Return>', { silent = true })
 keymap.set('n', 'ss', ':split<Return><C-w>w', { silent = true })
 keymap.set('n', 'sv', ':vsplit<Return><C-w>w', { silent = true })
 
--- Move window
+-- keymap.set('n', '<Leader>1', ':vertical resize +5<Return>', { silent = true })
+-- keymap.set('n', '<Leader>2', ':vertical resize -5<Return>', { silent = true })
+
+-- Move windor
 keymap.set('n', '<Leader>n', '<C-w>w')
 
 keymap.set('v', '<C-s>', function()
