@@ -33,9 +33,10 @@ nvim_lsp.tsserver.setup {
   capabilities = capabilities
 }
 
-nvim_lsp.sourcekit.setup {
-  on_attach = auto_format,
-}
+-- for swift and c-based languages
+-- nvim_lsp.sourcekit.setup {
+--   on_attach = auto_format,
+-- }
 
 nvim_lsp.sumneko_lua.setup {
   on_attach = auto_format,
