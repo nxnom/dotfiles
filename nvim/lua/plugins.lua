@@ -61,4 +61,6 @@ packer.startup(function(use)
   -- Themes
   use 'projekt0n/github-nvim-theme'
   -- use { "ellisonleao/gruvbox.nvim" }
+  --
+  use 'github/copilot.vim'
 end)
