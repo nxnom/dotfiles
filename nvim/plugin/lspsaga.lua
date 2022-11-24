@@ -3,12 +3,14 @@ if (not status) then return end
 
 saga.init_lsp_saga {
   finder_request_timeout = 8000,
-  server_filetype_map = {
-    typescript = 'typescript'
-  }
+  rename_in_select = false,
+  -- server_filetype_map = {
+  --   typescript = 'typescript'
+  -- }
 }
 
-local opts = { noremap = true, silent = true }
+-- noremap = true,
+local opts = { silent = true }
 vim.keymap.set('n', '<Leader>er', '<Cmd>Lspsaga diagnostic_jump_next<CR>', opts)
 vim.keymap.set('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
 vim.keymap.set('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', opts)
