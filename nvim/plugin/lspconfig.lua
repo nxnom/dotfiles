@@ -20,9 +20,10 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
-nvim_lsp.flow.setup {
-  capabilities = capabilities
-}
+-- https://flow.org/en/docs/install/
+-- nvim_lsp.flow.setup {
+--   capabilities = capabilities
+-- }
 
 nvim_lsp.tsserver.setup {
   init_options = {
@@ -30,6 +31,9 @@ nvim_lsp.tsserver.setup {
       disableSuggestions = true,
     },
   },
+  -- filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
+  root_dir = nvim_lsp.util.root_pattern("index.html", "index.js", "package.json", "tsconfig.json", "jsconfig.json",
+    ".git"),
   capabilities = capabilities
 }
 
@@ -56,6 +60,16 @@ nvim_lsp.sumneko_lua.setup {
   },
 }
 
+nvim_lsp.html.setup {
+  on_attach = auto_format,
+  capabilities = capabilities
+}
+
+-- css lsp server
+nvim_lsp.cssls.setup {
+  on_attach = auto_format,
+  capabilities = capabilities
+}
 -- nvim_lsp.tailwindcss.setup {}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
