@@ -1,4 +1,6 @@
 # Font configuration (changes require restart)
+env:
+  TERM: xterm-256color
 font:
   # Normal (roman) font face
   normal:

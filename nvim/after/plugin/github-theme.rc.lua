@@ -2,7 +2,7 @@ local status, theme = pcall(require, "github-theme")
 if (not status) then return end
 
 theme.setup({
-  theme_style = "dark",
+  theme_style = "dark_default",
   function_style = "italic",
   sidebars = { "qf", "vista_kind", "terminal", "packer" },
 
