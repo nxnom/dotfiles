@@ -14,11 +14,14 @@ keymap.set('n', '-', '<C-x>')
 -- keymap.set('n', '<C-a>', 'gg<S-v>G')
 
 -- New tab
-keymap.set('n', 'st', ':tabedit<Return>', { silent = true })
+keymap.set('n', '<Leader>st', ':tabedit<Return>', { silent = true })
 
 -- Split windows
-keymap.set('n', 'ss', ':split<Return><C-w>w', { silent = true })
-keymap.set('n', 'sv', ':vsplit<Return><C-w>w', { silent = true })
+keymap.set('n', '<Leader>ss', ':split<Return><C-w>w', { silent = true })
+keymap.set('n', '<Leader>sv', ':vsplit<Return><C-w>w', { silent = true })
+
+keymap.set('n', '<Leader>sm', ':vsplit<Return><C-w>w:vertical resize 60<Return>:set nornu<Return>:set nonu<Return>',
+  { silent = true })
 
 -- keymap.set('n', '<Leader>1', ':vertical resize +5<Return>', { silent = true })
 -- keymap.set('n', '<Leader>2', ':vertical resize -5<Return>', { silent = true })
