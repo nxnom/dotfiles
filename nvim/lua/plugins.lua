@@ -60,7 +60,10 @@ packer.startup(function(use)
 
   -- Themes
   use 'projekt0n/github-nvim-theme'
-  -- use { "ellisonleao/gruvbox.nvim" }
+  -- use 'tamelion/neovim-molokai'
+  -- use 'ful1e5/onedark.nvim'
+  -- use 'ellisonleao/gruvbox.nvim'
+  use 'folke/tokyonight.nvim'
   --
   use 'github/copilot.vim'
 end)

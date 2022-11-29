@@ -4,3 +4,6 @@ vim.opt.winblend = 0
 vim.opt.wildoptions = 'pum'
 vim.opt.pumblend = 5
 vim.opt.background = 'dark'
+
+-- vim.cmd [[colorscheme tokyonight-night]]
+-- vim.cmd [[colorscheme github_dark_default]]
