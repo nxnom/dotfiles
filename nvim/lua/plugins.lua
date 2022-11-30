@@ -66,4 +66,10 @@ packer.startup(function(use)
   use 'folke/tokyonight.nvim'
   --
   use 'github/copilot.vim'
+
+  -- markdown
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
 end)
