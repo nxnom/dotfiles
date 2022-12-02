@@ -15,3 +15,5 @@ prettier.setup {
     "less"
   }
 }
+
+vim.keymap.set('n', '<Leader>p', ':Prettier<Return>', { silent = true })

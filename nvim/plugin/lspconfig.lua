@@ -61,7 +61,6 @@ nvim_lsp.sumneko_lua.setup {
 }
 
 nvim_lsp.html.setup {
-  on_attach = auto_format,
   capabilities = capabilities
 }
 

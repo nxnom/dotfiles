@@ -1,7 +1,9 @@
 local status, null_ls = pcall(require, "null-ls")
 if (not status) then return end
 
-local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
+local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
+local event = "BufWritePre" -- or "BufWritePost"
+local async = event == "BufWritePost"
 
 ---@diagnostic disable-next-line: redundant-parameter
 null_ls.setup {
@@ -12,12 +14,17 @@ null_ls.setup {
     null_ls.builtins.diagnostics.fish
   },
   on_attach = function(client, bufnr)
-    if client.server_capabilities.documentFormattingProvider then
-      vim.api.nvim_clear_autocmds { buffer = 0, group = augroup_format }
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup_format,
-        buffer = 0,
-        callback = function() vim.lsp.buf.formatting_seq_sync() end
+    if client.supports_method("textDocument/formatting") then
+
+      -- format on save
+      vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+      vim.api.nvim_create_autocmd(event, {
+        buffer = bufnr,
+        group = group,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = bufnr, async = async })
+        end,
+        desc = "[lsp] format on save",
       })
     end
   end,
