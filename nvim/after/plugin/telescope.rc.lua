@@ -28,12 +28,12 @@ telescope.setup {
       '-uu' -- **This is the setting not being respected**
     },
     file_ignore_patterns = {
-      ".git/", "node_modules", "build", "dist", "yarn.lock", "package-lock.json", ".cache/"
+      ".git/", "node_modules", "build/", "dist/", "yarn.lock", "package-lock.json", ".cache/"
     }
   },
   extensions = {
     file_browser = {
-      theme = "ivy",
+      theme = "dropdown",
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
       hidden = true,
@@ -62,7 +62,7 @@ telescope.load_extension("file_browser")
 vim.keymap.set('n', 'ff',
   function()
     builtin.find_files({
-      no_ignore = false,
+      no_ignore = true,
       hidden = true
     })
   end)
