@@ -1,7 +1,8 @@
 local keymap = vim.keymap
 
--- Do not yank with x
+-- Do not yank
 keymap.set('n', 'x', '"_x')
+keymap.set('n', 'c', '"_c')
 
 -- Increment/decrement
 keymap.set('n', '+', '<C-a>')
