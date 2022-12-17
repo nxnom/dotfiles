@@ -4,15 +4,24 @@ local keymap = vim.keymap
 keymap.set('n', 'x', '"_x')
 keymap.set('n', 'c', '"_c')
 
+-- Vertical Movement with center
+keymap.set('n', '<C-u>', "<C-u>zz")
+keymap.set('n', '<C-d>', "<C-d>zz")
+
+keymap.set('n', 'n', "nzzzv")
+keymap.set('n', 'N', "nzzzv")
+
+keymap.set('n', 'J', "mzJ`z") -- restore cursor location
+
+-- clipboards
+keymap.set('n', 'Y', "y$") -- copy from cursor to end of line
+keymap.set('n', '<Leader>y', '"+y')
+keymap.set('n', '<Leader>Y', '"+y$') -- copy from cursor to end of line
+keymap.set('v', '<Leader>y', '"+y')
+
 -- Increment/decrement
 keymap.set('n', '+', '<C-a>')
 keymap.set('n', '-', '<C-x>')
-
--- Delete a world backwords
--- keymap.set('n', 'dw', 'vb"_d')
-
--- Select all
--- keymap.set('n', '<C-a>', 'gg<S-v>G')
 
 -- New tab
 keymap.set('n', '<Leader>st', ':tabedit<Return>', { silent = true })
@@ -24,31 +33,9 @@ keymap.set('n', '<Leader>sv', ':vsplit<Return><C-w>w', { silent = true })
 keymap.set('n', '<Leader>sm', ':vsplit<Return><C-w>w:vertical resize 60<Return>:set nornu<Return>:set nonu<Return>',
   { silent = true })
 
--- keymap.set('n', '<Leader>1', ':vertical resize +5<Return>', { silent = true })
--- keymap.set('n', '<Leader>2', ':vertical resize -5<Return>', { silent = true })
-
--- Move windor
+-- Move window
 keymap.set('n', '<Leader>n', '<C-w>w')
 
-keymap.set('v', '<C-s>', function()
-  local starting, ending = vim.api.nvim_buf_get_mark(0, "<")[1] - 1, vim.api.nvim_buf_get_mark(0, ">")[1]
-  vim.api.nvim_command('nohls')
-
-  print(starting, ending)
-  local textCode = table.concat(vim.api.nvim_buf_get_lines(0, starting, ending, false), "\n")
-
-  print(textCode)
-  -- local filetype = vim.bo.filetype
-  -- local response = io.popen("silicon --from-clipboard --output ~/Screenshot/Silicon/$(date +%Y%m%d%H%M%S).png -l " ..
-  --   filetype)
-  --
-  -- if (response == nil) then
-  --   print('Screenshot success')
-  --   return
-  -- end
-  --
-  -- local result = response:read("*a")
-  -- response:close()
-  -- print(result)
-
-end)
+-- Move line
+keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
