@@ -1,13 +1,22 @@
---vim.lsp.set_log_level("debug")
-
 local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
 
 -- after the language server attaches to the current buffer
-local auto_format = function(client)
-  if client.server_capabilities.documentFormattingProvider then
-    vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
-  end
+local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
+
+local auto_format = function(_, bufnr)
+  vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    group = augroup_format,
+    buffer = bufnr,
+    callback = function()
+      vim.lsp.buf.format({ bufnr = bufnr })
+    end,
+  })
+end
+
+local reset_format = function(client)
+  client.server_capabilities.document_formatting = false
 end
 
 -- Set up completion using nvim_cmp with LSP source
@@ -27,14 +36,12 @@ capabilities.textDocument.foldingRange = {
 
 nvim_lsp.tsserver.setup {
   init_options = {
-    preferences = {
-      disableSuggestions = true,
-    },
+    preferences = { disableSuggestions = true },
   },
-  -- filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
-  root_dir = nvim_lsp.util.root_pattern("index.html", "index.js", "package.json", "tsconfig.json", "jsconfig.json",
-    ".git"),
-  capabilities = capabilities
+  cmd = { "typescript-language-server", "--stdio" },
+  -- root_dir = nvim_lsp.util.root_pattern("*.js", "*.ts", "*.jsx", "*.tsx"),
+  capabilities = capabilities,
+  on_attach = reset_format,
 }
 
 -- for swift and c-based languages
@@ -61,13 +68,14 @@ nvim_lsp.sumneko_lua.setup {
 }
 
 nvim_lsp.html.setup {
-  capabilities = capabilities
+  capabilities = capabilities,
+  on_attach = reset_format,
 }
 
 -- css lsp server
 nvim_lsp.cssls.setup {
-  on_attach = auto_format,
-  capabilities = capabilities
+  capabilities = capabilities,
+  on_attach = reset_format,
 }
 -- nvim_lsp.tailwindcss.setup {}
 
