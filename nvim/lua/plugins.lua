@@ -27,6 +27,23 @@ packer.startup(function(use)
 
   use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim' }
 
+  -- Debuggers
+  use 'mfussenegger/nvim-dap'
+  use 'rcarriga/nvim-dap-ui'
+  use 'mxsdev/nvim-dap-vscode-js'
+
+  use {
+    "microsoft/vscode-js-debug",
+    opt = true,
+    run = "npm install --legacy-peer-deps && npm run compile"
+  }
+
+  use {
+    "microsoft/vscode-chrome-debug",
+    opt = true,
+    run = "npm install && npm run build"
+  }
+
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
