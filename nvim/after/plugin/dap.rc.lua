@@ -11,11 +11,9 @@ vim.fn.sign_define('DapLogPoint', { text = '📝', texthl = '', linehl = '', num
 vim.fn.sign_define('DapBreakpointCondition', { text = '✅', texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapBreakpointRejected', { text = '❌', texthl = '', linehl = '', numhl = '' })
 
-
-vim.keymap.set('n', '<leader>dc', dap.continue)
-
-vim.keymap.set('n', '<leader>djc', function()
+local debugJSInChrome = function()
   local port = vim.fn.input('Port: ')
+  if (port == '') then return end
 
   dap.run({
     type = "chrome",
@@ -28,18 +26,24 @@ vim.keymap.set('n', '<leader>djc', function()
     cwd = vim.fn.getcwd(),
     protocol = "inspector",
   })
-end)
+end
 
-vim.keymap.set('n', '<leader>di', dap.step_into)
-vim.keymap.set('n', '<leader>do', dap.step_out)
-vim.keymap.set('n', '<leader>dn', dap.step_over)
+-- Key maps
+vim.keymap.set('n', '<leader>dc', dap.continue)
 vim.keymap.set('n', '<leader>dr', function()
-  dap.repl.toggle(nil, "rightb vs")
-  -- focus to the REPL
-  -- vim.cmd [[wincmd p]]
+  dap.run_last();
+  vim.cmd('stopinsert') -- somehow [dap.run_last] change into insert mode
 end)
-vim.keymap.set('n', '<leader>dq', dap.close)
+vim.keymap.set('n', '<leader>djc', debugJSInChrome)
+vim.keymap.set('n', '<leader>dsi', dap.step_into)
+vim.keymap.set('n', '<leader>dso', dap.step_out)
+vim.keymap.set('n', '<leader>dn', dap.step_over)
+vim.keymap.set('n', '<leader>do', function()
+  dap.repl.toggle(nil, "rightb vs")
+  -- vim.cmd [[wincmd p]] -- focus to the REPL
+end)
 
+vim.keymap.set('n', '<leader>dq', dap.close)
 vim.keymap.set('n', '<leader>dd', dap.toggle_breakpoint)
 vim.keymap.set('n', '<leader>dC', dap.clear_breakpoints)
 vim.keymap.set('n', '<leader>db', function()
@@ -52,7 +56,6 @@ end)
 dap.terminate(nil, nil, function() end)
 
 require("dap-vscode-js").setup({
-  log_file_level = vim.log.levels.TRACE,
   adapters = {
     "pwa-node",
     "pwa-chrome",
@@ -79,24 +82,35 @@ dap.adapters.chrome = {
 for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "javascriptreact" }) do
   dap.configurations[language] = {
     {
+      name = "Launch file",
       type = "pwa-node",
       request = "launch",
-      name = "Launch file",
       program = "${file}",
       cwd = "${workspaceFolder}",
       console = 'integratedTerminal',
     },
     {
+      name = "Run 'npm run dev'",
+      request = "launch",
+      runtimeArgs = { "run", "dev" },
+      cwd = "${workspaceFolder}",
+      runtimeExecutable = "npm",
+      skipFiles = { "<node_internals>/**" },
+      console = "integratedTerminal",
+      type = "pwa-node",
+      restart = true,
+    },
+    {
+      name = "Attach",
       type = "pwa-node",
       request = "attach",
-      name = "Attach",
       processId = require("dap.utils").pick_process,
       cwd = "${workspaceFolder}",
     },
     {
+      name = "Debug Jest Tests",
       type = "pwa-node",
       request = "launch",
-      name = "Debug Jest Tests",
       -- trace = true, -- include debugger info
       runtimeExecutable = "node",
       runtimeArgs = {
@@ -107,17 +121,6 @@ for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "java
       cwd = "${workspaceFolder}",
       console = "integratedTerminal",
       internalConsoleOptions = "neverOpen",
-    },
-    {
-      name = "npm run dev",
-      request = "launch",
-      runtimeArgs = { "run", "dev" },
-      cwd = "${workspaceFolder}",
-      runtimeExecutable = "npm",
-      skipFiles = { "<node_internals>/**" },
-      console = "integratedTerminal",
-      type = "pwa-node",
-      restart = true,
     },
   }
 end
@@ -138,25 +141,17 @@ dapui.setup({
   },
 })
 
-dap.listeners.after.event_initialized["dapui_config"] = function(e)
-  print(e);
-  dapui.open({})
-end
--- dap.listeners.before.event_terminated["dapui_config"] = function()
---   dapui.close({})
--- end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close({})
-end
+dap.listeners.after.event_initialized["dapui_config"] = dapui.open
+dap.listeners.before.event_exited["dapui_config"] = dapui.close
+-- dap.listeners.before.event_terminated["dapui_config"] = dapui.close -- trigger when event end
 
-vim.keymap.set('n', '<leader>du', function()
-  ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
-  require("dapui").toggle()
-end)
+vim.keymap.set('n', '<leader>du', dapui.toggle)
 vim.keymap.set('n', '<leader>dk', function()
-  ---@diagnostic disable-next-line: param-type-mismatch
   dapui.eval(nil, { enter = true })
 end)
-vim.keymap.set('n', '<Leader>df', function()
+vim.keymap.set('n', '<leader>dU', function()
+  dapui.float_element(nil, { enter = true })
+end)
+vim.keymap.set('n', '<leader>df', function()
   dapui.float_element('Scopes', { enter = true })
 end)
