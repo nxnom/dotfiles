@@ -10,6 +10,11 @@ vim.cmd [[packadd packer.nvim]]
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
+  -- favourite nvim plugins
+  use "metakirby5/codi.vim" -- The interactive scratchpad.
+  use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+  -- end
+
   use 'williamboman/mason.nvim' -- easy LSP, formatter installer
   use 'williamboman/mason-lspconfig.nvim'
 
@@ -42,8 +47,6 @@ packer.startup(function(use)
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
 
-  -- best nvim plugin ever xD
-  use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
 
   -- Auto tag and auto pair
   use 'windwp/nvim-autopairs'
@@ -84,4 +87,5 @@ packer.startup(function(use)
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   })
+
 end)

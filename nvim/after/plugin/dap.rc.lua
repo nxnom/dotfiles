@@ -35,10 +35,10 @@ vim.keymap.set('n', '<leader>dr', function()
   vim.cmd('stopinsert') -- somehow [dap.run_last] change into insert mode
 end)
 vim.keymap.set('n', '<leader>djc', debugJSInChrome)
-vim.keymap.set('n', '<leader>dsi', dap.step_into)
-vim.keymap.set('n', '<leader>dso', dap.step_out)
+vim.keymap.set('n', '<leader>di', dap.step_into)
+vim.keymap.set('n', '<leader>do', dap.step_out)
 vim.keymap.set('n', '<leader>dn', dap.step_over)
-vim.keymap.set('n', '<leader>do', function()
+vim.keymap.set('n', '<leader>dp', function()
   dap.repl.toggle(nil, "rightb vs")
   -- vim.cmd [[wincmd p]] -- focus to the REPL
 end)

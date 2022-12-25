@@ -51,3 +51,8 @@ keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true })
 -- Insert keymap
 -- keymap.set('i', '<Char-059><Char-059>', '<Esc>A;<Esc>', { noremap = true })
 keymap.set('i', ';;', '<Esc>A;<Esc>', { noremap = true })
+
+
+-- Codi keymap
+keymap.set('n', '<Leader>cc', ':Codi<Return>', { silent = true })
+keymap.set('n', '<Leader>cd', ':Codi!<Return>', { silent = true })
