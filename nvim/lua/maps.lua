@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 
 keymap.set('n', '<Leader>o', 'o<Esc>', { noremap = true })
-keymap.set('n', '<Leader>O', 'O<Esc>', { noremap = true })
+keymap.set('n', '<Leader>O', 'mzO<Esc>`z', { noremap = true })
 
 -- Do not yank
 keymap.set('n', 'x', '"_x', { noremap = true })
@@ -51,5 +51,3 @@ keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true })
 -- Insert keymap
 -- keymap.set('i', '<Char-059><Char-059>', '<Esc>A;<Esc>', { noremap = true })
 keymap.set('i', ';;', '<Esc>A;<Esc>', { noremap = true })
-
--- Ctrl + Enter in insert mode
