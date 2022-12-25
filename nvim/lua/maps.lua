@@ -54,5 +54,5 @@ keymap.set('i', ';;', '<Esc>A;<Esc>', { noremap = true })
 
 
 -- Codi keymap
-keymap.set('n', '<Leader>cc', ':Codi<Return>', { silent = true })
-keymap.set('n', '<Leader>cd', ':Codi!<Return>', { silent = true })
+keymap.set('n', '<Leader>xx', ':Codi<Return>', { silent = true })
+keymap.set('n', '<Leader>zz', ':Codi!<Return>', { silent = true })

@@ -15,6 +15,9 @@ packer.startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
   -- end
 
+  -- like Codi but not as good
+  -- use { 'michaelb/sniprun', run = 'bash ./install.sh' } -- Run code snippets without leaving the editor
+
   use 'williamboman/mason.nvim' -- easy LSP, formatter installer
   use 'williamboman/mason-lspconfig.nvim'
 
