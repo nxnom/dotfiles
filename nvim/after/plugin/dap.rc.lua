@@ -62,10 +62,18 @@ require("dap-vscode-js").setup({
   }, -- which adapters to register in nvim-dap
 })
 
+dap.adapters.dart = {
+  type = "executable",
+  command = "node",
+  -- change to your debug adapter folder: this is packer run path
+  args = { os.getenv("HOME") .. "/.local/share/nvim/site/pack/packer/opt/Dart-Code/out/dist/debug.js", "flutter" }
+}
+
 dap.adapters.chrome = {
   type = "executable",
   command = "node",
-  args = { os.getenv("HOME") .. "/Debuggers/vscode-chrome-debug/out/src/chromeDebug.js" } -- TODO adjust
+  -- change to your debug adapter folder: this is packer run path
+  args = { os.getenv("HOME") .. "/.local/share/nvim/site/pack/packer/opt/vscode-chrome-debug/out/src/chromeDebug.js" }
 }
 
 for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "javascriptreact" }) do
@@ -130,7 +138,8 @@ dapui.setup({
   },
 })
 
-dap.listeners.after.event_initialized["dapui_config"] = function()
+dap.listeners.after.event_initialized["dapui_config"] = function(e)
+  print(e);
   dapui.open({})
 end
 -- dap.listeners.before.event_terminated["dapui_config"] = function()

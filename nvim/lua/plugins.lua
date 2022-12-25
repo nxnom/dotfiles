@@ -13,10 +13,9 @@ packer.startup(function(use)
   use 'williamboman/mason.nvim' -- easy LSP, formatter installer
   use 'williamboman/mason-lspconfig.nvim'
 
-  -- use { 'svrana/neosolarized.nvim', requires = 'tjdevries/colorbuddy.nvim' }
-
   use 'nvim-lualine/lualine.nvim' -- Statusline
 
+  -- LSP
   use 'neovim/nvim-lspconfig' -- LSP
   use 'onsails/lspkind.nvim' -- vs-code like pictograms
   use 'glepnir/lspsaga.nvim' -- Use LSP to use go to def, code action, errors ,etc...
@@ -32,24 +31,19 @@ packer.startup(function(use)
   use 'rcarriga/nvim-dap-ui'
   use 'mxsdev/nvim-dap-vscode-js'
 
-  use {
-    "microsoft/vscode-js-debug",
-    opt = true,
-    run = "npm install --legacy-peer-deps && npm run compile"
-  }
-
-  use {
-    "microsoft/vscode-chrome-debug",
-    opt = true,
-    run = "npm install && npm run build"
-  }
+  -- Download and compiled Debuggers excutables
+  use { "microsoft/vscode-js-debug", opt = true, run = "npm install --legacy-peer-deps && npm run compile" }
+  use { "microsoft/vscode-chrome-debug", opt = true, run = "npm install && npm run build" }
+  use { "Dart-Code/Dart-Code", opt = true, run = "npm install && npx webpack --mode production" }
+  -- end Debuggers
 
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
+
+  -- best nvim plugin ever xD
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
-  -- use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
 
   -- Auto tag and auto pair
   use 'windwp/nvim-autopairs'
@@ -57,12 +51,13 @@ packer.startup(function(use)
 
   use 'nvim-lua/plenary.nvim' -- Common utils
   use 'kyazdani42/nvim-web-devicons' -- File icons
+
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
 
   use 'akinsho/nvim-bufferline.lua'
-  use 'norcalli/nvim-colorizer.lua'
+  use 'norcalli/nvim-colorizer.lua' -- show color
 
   -- git
   use 'lewis6991/gitsigns.nvim'
@@ -84,7 +79,7 @@ packer.startup(function(use)
   --
   use 'github/copilot.vim'
 
-  -- markdown
+  -- markdown previewer
   use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,

@@ -20,19 +20,37 @@ flutter.setup {
   },
   decorations = {
     statusline = {
-      app_version = false,
-      device = false,
+      -- app_version = true,
+      -- device = true,
     }
   },
-  -- debugger = { -- integrate with nvim dap + install dart code debugger
-  --   enabled = false,
-  --   run_via_dap = false, -- use dap instead of a plenary job to run flutter apps
-  --   exception_breakpoints = {}
-  --   register_configurations = function(paths)
-  --     require("dap").configurations.dart = {
-  --     }
-  --   end,
-  -- },
+  debugger = { -- integrate with nvim dap + install dart code debugger
+    enabled = true,
+    run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
+    exception_breakpoints = {},
+    ---@diagnostic disable-next-line: unused-local
+    register_configurations = function(paths)
+      require("dap").configurations.dart = {
+        {
+          name = "Launch",
+          request = "launch",
+          type = "dart"
+        },
+        {
+          name = "Profile mode",
+          request = "launch",
+          type = "dart",
+          flutterMode = "profile"
+        },
+        {
+          name = "Release mode",
+          request = "launch",
+          type = "dart",
+          flutterMode = "release"
+        }
+      }
+    end,
+  },
   flutter_path = "/usr/local/bin/flutter", -- <-- this takes priority over the lookup
   flutter_lookup_cmd = nil, -- example "dirname $(which flutter)" or "asdf where flutter"
   fvm = false, -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
@@ -45,7 +63,7 @@ flutter.setup {
   },
   dev_log = {
     enabled = true,
-    open_cmd = "tabedit", -- command to use to open the log buffer
+    open_cmd = "rightb 60vnew", -- command to use to open the log buffer
   },
   dev_tools = {
     autostart = false, -- autostart devtools server if not detected
@@ -60,8 +78,9 @@ flutter.setup {
       enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
       background = false, -- highlight the background
       foreground = false, -- highlight the foreground
-      virtual_text = true, -- show the highlight using virtual text
-      virtual_text_str = "■", -- the virtual text character to highlight
+      virtual_text = false, -- show the highlight using virtual text
+      -- virtual_text_str = "■", -- the virtual text character to highlight
+      virtual_text_str = " ", -- the virtual text character to highlight
     },
     -- analysisExcludedFolders = {"<path-to-flutter-sdk-packages>"},
     on_attach = on_attach,
