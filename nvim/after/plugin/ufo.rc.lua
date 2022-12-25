@@ -11,8 +11,7 @@ vim.o.foldenable = true
 -- vim.keymap.set('n', '<Leader>zM', require('ufo').closeAllFolds)
 
 ufo.setup({
-  close_fold_kinds = { 'imports', 'comment' },
-  provider_selector = function(bufnr, filetype, buftype)
+  provider_selector = function()
     return { 'treesitter', 'indent' }
   end
 });
