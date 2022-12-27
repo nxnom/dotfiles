@@ -58,9 +58,9 @@ keymap.set('n', '<Leader>zz', ':Codi!<Return>', { silent = true })
 -- Move select word between '' or "" or () or [] or {}
 keymap.set('n', "<Leader>''", "diwi''<Esc>hp", { noremap = true })
 keymap.set('n', '<Leader>""', 'diwi""<Esc>hp', { noremap = true })
-keymap.set('n', '<Leader>()', 'diwi()<Esc>hp', { noremap = true })
-keymap.set('n', '<Leader>[]', 'diwi[]<Esc>hp', { noremap = true })
-keymap.set('n', '<Leader>{}', 'diwi{}<Esc>hp', { noremap = true })
+keymap.set('n', '<Leader>((', 'diwi()<Esc>hp', { noremap = true })
+keymap.set('n', '<Leader>[[', 'diwi[]<Esc>hp', { noremap = true })
+keymap.set('n', '<Leader>{{', 'diwi{}<Esc>hp', { noremap = true })
 
 -- Move visual selected values between '' or "" or () or [] or {}
 -- Not Working for Visual Line
