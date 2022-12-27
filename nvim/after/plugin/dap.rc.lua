@@ -3,7 +3,12 @@ if (not status) then print('dap not found') return end
 
 dap.set_log_level('ERROR'); -- TRACE DEBUG INFO WARN ERROR
 dap.defaults.fallback.terminal_win_cmd = 'rightb vs new'
--- dap.defaults.fallback.focus_terminal = true
+
+local repl = require 'dap.repl'
+
+repl.commands = vim.tbl_extend('force', repl.commands, {
+  clear = { 'clear', '.clear', 'cls', 'c' },
+})
 
 vim.fn.sign_define('DapBreakpoint', { text = '🔹', texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapStopped', { text = '🔻', texthl = '', linehl = '', numhl = '' })
@@ -18,7 +23,7 @@ local debugJSInChrome = function()
   dap.run({
     type = "chrome",
     request = "launch",
-    name = "Debug vite app",
+    name = "Debug WebApp in Chrome",
     url = "http://localhost:" .. port,
     webRoot = "${workspaceFolder}",
     console = "integratedTerminal",
@@ -141,8 +146,8 @@ dapui.setup({
   },
 })
 
-dap.listeners.after.event_initialized["dapui_config"] = dapui.open
-dap.listeners.before.event_exited["dapui_config"] = dapui.close
+-- dap.listeners.after.event_initialized["dapui_config"] = dapui.open
+-- dap.listeners.before.event_exited["dapui_config"] = dapui.close
 -- dap.listeners.before.event_terminated["dapui_config"] = dapui.close -- trigger when event end
 
 vim.keymap.set('n', '<leader>du', dapui.toggle)
