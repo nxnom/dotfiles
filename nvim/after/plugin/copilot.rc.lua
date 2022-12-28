@@ -7,6 +7,7 @@ vim.g.copilot_filetypes = {
   typescript = true,
   dart = true,
   ruby = true,
+  zsh = true,
 }
 
 vim.keymap.set('n', '<C-\\>', ':Copilot panel<Return>', { silent = true })
