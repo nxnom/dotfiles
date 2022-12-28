@@ -1,5 +1,5 @@
-.zsh_history
-.zsh_sessions
+.zsh_*
+.zcompdump
 
 plugins/*
 !plugins/.gitkeep
