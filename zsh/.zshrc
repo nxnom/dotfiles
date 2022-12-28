@@ -1,6 +1,3 @@
-export XDG_CONFIG_HOME=$HOME/.config
-export ZOTDIR=$XDG_CONFIG_HOME/zsh
-
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
@@ -21,10 +18,10 @@ export KEYTIMEOUT=1
 # ------------------------------------- #
 # Aliases                               #
 # ------------------------------------- #
-source $ZOTDIR/aliases.zsh
+source $ZDOTDIR/aliases.zsh
 
 # device specific configs
-[ -f $ZOTDIR/internal.zsh ] && source $ZOTDIR/internal.zsh
+[ -f $ZDOTDIR/internal.zsh ] && source $ZDOTDIR/internal.zsh
 
 
 # ------------------------------------- #
@@ -52,7 +49,7 @@ zstyle ':vcs_info:git:*' actionformats ' (%b|%a )%u%c'
 # ------------------------------------- #
 # PLUGINS                               #
 # ------------------------------------- #
-ZSH_PLUGINS=$ZOTDIR/plugins
+ZSH_PLUGINS=$ZDOTDIR/plugins
 source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
