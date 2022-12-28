@@ -1,6 +1,41 @@
 env:
   TERM: xterm-256color
 
+window:
+  # Window dimensions (changes require restart)
+  #
+  # Specified in number of columns/lines, not pixels.
+  # If both are `0`, this setting is ignored.
+  dimensions:
+    columns: 0
+    lines: 0
+
+  # Window padding (changes require restart)
+  #
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
+  padding:
+    x: 0
+    y: 0
+
+  # Spread additional padding evenly around the terminal content.
+  dynamic_padding: false
+  opacity: 0.9
+
+  # Window decorations
+  #
+  # Values for `decorations`:
+  #     - full: Borders and title bar
+  #     - none: Neither borders nor title bar
+  #
+  # Values for `decorations` (macOS only):
+  #     - transparent: Title bar, transparent background and title bar buttons
+  #     - buttonless: Title bar, transparent background, but no title bar buttons
+  decorations: full
+
+  # When true, alacritty starts maximized.
+  start_maximized: true
+
 # Font configuration (changes require restart)
 font:
   # Normal (roman) font face
@@ -25,3 +60,31 @@ font:
 
   # Point size
   size: 12.0
+
+# Tokyo Night Dark
+colors:
+  primary:
+    background: '0x1a1b26'
+    foreground: '0xa9b1d6'
+
+  # Normal colors
+  normal:
+    black: '0x32344a'
+    red: '0xf7768e'
+    green: '0x9ece6a'
+    yellow: '0xe0af68'
+    blue: '0x7aa2f7'
+    magenta: '0xad8ee6'
+    cyan: '0x449dab'
+    white: '0x787c99'
+
+  # Bright colors
+  bright:
+    black: '0x444b6a'
+    red: '0xff7a93'
+    green: '0xb9f27c'
+    yellow: '0xff9e64'
+    blue: '0x7da6ff'
+    magenta: '0xbb9af7'
+    cyan: '0x0db9d7'
+    white: '0xacb0d0'
