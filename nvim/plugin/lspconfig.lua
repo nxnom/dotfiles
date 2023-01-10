@@ -72,6 +72,20 @@ nvim_lsp.html.setup {
   on_attach = reset_format,
 }
 
+nvim_lsp.emmet_ls.setup({
+  -- on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+  init_options = {
+    html = {
+      options = {
+        -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+        ["bem.enabled"] = true,
+      },
+    },
+  }
+})
+
 -- css lsp server
 nvim_lsp.cssls.setup {
   capabilities = capabilities,
