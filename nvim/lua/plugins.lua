@@ -15,7 +15,7 @@ packer.startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
   -- end
 
-  -- use { 'mattn/emmet-vim', } emmet good but there is emmet-ls(using builtin LSP client)
+  -- use { 'mattn/emmet-vim', } -- emmet-vim good but there is emmet-ls(using builtin LSP client)
 
   -- like Codi but not as good
   -- use { 'michaelb/sniprun', run = 'bash ./install.sh' } -- Run code snippets without leaving the editor

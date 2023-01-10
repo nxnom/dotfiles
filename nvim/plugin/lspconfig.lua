@@ -39,15 +39,10 @@ nvim_lsp.tsserver.setup {
     preferences = { disableSuggestions = true },
   },
   cmd = { "typescript-language-server", "--stdio" },
-  -- root_dir = nvim_lsp.util.root_pattern("*.js", "*.ts", "*.jsx", "*.tsx"),
   capabilities = capabilities,
   on_attach = reset_format,
+  single_file_support = true,
 }
-
--- for swift and c-based languages
--- nvim_lsp.sourcekit.setup {
---   on_attach = auto_format,
--- }
 
 nvim_lsp.sumneko_lua.setup {
   on_attach = auto_format,
@@ -73,7 +68,6 @@ nvim_lsp.html.setup {
 }
 
 nvim_lsp.emmet_ls.setup({
-  -- on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
   init_options = {
@@ -86,13 +80,15 @@ nvim_lsp.emmet_ls.setup({
   }
 })
 
--- css lsp server
+-- css
 nvim_lsp.cssls.setup {
   capabilities = capabilities,
   on_attach = reset_format,
 }
 
-nvim_lsp.tailwindcss.setup {}
+nvim_lsp.tailwindcss.setup {
+  autostart = false;
+}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -100,8 +96,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   update_in_insert = false,
   virtual_text = { spacing = 4, prefix = "●" },
   severity_sort = true,
-}
-)
+})
 
 -- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
