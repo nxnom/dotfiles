@@ -18,7 +18,7 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true
     }),
-    ['<tab>'] = cmp.mapping(function(fallback)
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
       local luasnip = require('luasnip')
 
       if luasnip and luasnip.expand_or_jumpable() then
