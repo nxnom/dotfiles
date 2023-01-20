@@ -1,5 +1,5 @@
 .zsh_*
-.zcompdump
+.zcomp*
 
 plugins/*
 !plugins/.gitkeep
