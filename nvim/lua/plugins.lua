@@ -63,6 +63,9 @@ packer.startup(function(use)
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  -- fzf
+  use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end, }
 
   use 'akinsho/nvim-bufferline.lua'
   use 'norcalli/nvim-colorizer.lua' -- show color

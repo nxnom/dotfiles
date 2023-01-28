@@ -24,7 +24,7 @@ null_ls.setup {
       -- },
     }),
     null_ls.builtins.diagnostics.eslint_d.with({
-      diagnostics_format = '[eslint] #{m}\n(#{c})'
+      diagnostics_format = '[eslint_d] #{m}\n(#{c})'
     }),
     null_ls.builtins.code_actions.eslint_d,
     null_ls.builtins.diagnostics.tidy.with({

@@ -16,6 +16,7 @@ telescope.setup {
         ["q"] = actions.close
       },
     },
+    initial_mode = "insert",
     vimgrep_arguments = {
       'rg',
       '--color=never',
@@ -58,12 +59,14 @@ telescope.setup {
 }
 
 telescope.load_extension("file_browser")
+telescope.load_extension('fzf')
 
 vim.keymap.set('n', 'ff',
   function()
     builtin.find_files({
-      no_ignore = true,
-      hidden = true
+      -- cwd = telescope_buffer_dir(),
+      hidden = true,
+      follow = true,
     })
   end)
 vim.keymap.set('n', '<C-f>', function()
