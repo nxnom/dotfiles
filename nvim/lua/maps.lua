@@ -49,7 +49,7 @@ keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true })
 keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true })
 
 -- Insert keymap
-keymap.set('i', ';;', '<Esc>A;<Esc>', { noremap = true })
+keymap.set('i', '<C-e>', '<Esc>A;<Return>', { noremap = true });
 
 -- Codi keymap
 keymap.set('n', '<Leader>xx', ':Codi<Return>', { silent = true })
@@ -69,3 +69,6 @@ keymap.set('v', '<Leader>""', 'di""<Esc>hp', { noremap = true })
 keymap.set('v', '<Leader>((', 'di()<Esc>hp', { noremap = true })
 keymap.set('v', '<Leader>[[', 'di[]<Esc>hp', { noremap = true })
 keymap.set('v', '<Leader>{{', 'di{}<Esc>hp', { noremap = true })
+
+-- LSP
+keymap.set('n', '<Leader>fo', vim.lsp.buf.format)

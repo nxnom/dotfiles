@@ -3,10 +3,10 @@ if (not status) then return end
 
 local on_attach = function()
   -- saved on format
-  vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+  -- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 
   -- keymaps
-  vim.keymap.set('n', '<Leader>fo', '<Cmd>FlutterOutlineToggle<CR>', {})
+  vim.keymap.set('n', '<Leader>fO', '<Cmd>FlutterOutlineToggle<CR>', {})
   vim.keymap.set('n', '<Leader>fr', '<Cmd>FlutterRestart<CR>', {})
   vim.keymap.set('n', '<Leader>fc', '<Cmd>FlutterLogClear<CR>', {})
   vim.keymap.set('n', '<Leader>fs', '<Cmd>FlutterRun<CR>', {})

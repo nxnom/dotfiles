@@ -2,20 +2,26 @@ local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
 
 -- after the language server attaches to the current buffer
-local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
+-- local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 
-local auto_format = function(_, bufnr)
-  vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    group = augroup_format,
-    buffer = bufnr,
-    callback = function()
-      vim.lsp.buf.format({ bufnr = bufnr })
-    end,
-  })
-end
+-- local auto_format = function(_, bufnr)
+--   vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
+--   vim.api.nvim_create_autocmd("BufWritePre", {
+--     group = augroup_format,
+--     buffer = bufnr,
+--     callback = function()
+--       vim.lsp.buf.format({ bufnr = bufnr })
+--     end,
+--   })
+-- end
 
-local reset_format = function(client)
+-- local format = function(_, bufnr)
+--   vim.keymap.set('n', '<Leader>fo', function()
+--     vim.lsp.buf.format({ bufnr = bufnr })
+--   end)
+-- end
+
+local disable_format = function(client)
   client.server_capabilities.document_formatting = false
 end
 
@@ -40,12 +46,12 @@ nvim_lsp.tsserver.setup {
   },
   cmd = { "typescript-language-server", "--stdio" },
   capabilities = capabilities,
-  on_attach = reset_format,
+  on_attach = disable_format,
   single_file_support = true,
 }
 
 nvim_lsp.sumneko_lua.setup {
-  on_attach = auto_format,
+  -- on_attach = format,
   settings = {
     Lua = {
       diagnostics = {
@@ -64,7 +70,7 @@ nvim_lsp.sumneko_lua.setup {
 
 nvim_lsp.html.setup {
   capabilities = capabilities,
-  on_attach = reset_format,
+  on_attach = disable_format,
 }
 
 nvim_lsp.emmet_ls.setup({
@@ -83,7 +89,7 @@ nvim_lsp.emmet_ls.setup({
 -- css
 nvim_lsp.cssls.setup {
   capabilities = capabilities,
-  on_attach = reset_format,
+  on_attach = disable_format,
 }
 
 nvim_lsp.tailwindcss.setup {
