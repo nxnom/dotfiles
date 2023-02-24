@@ -50,7 +50,7 @@ nvim_lsp.tsserver.setup {
   single_file_support = true,
 }
 
-nvim_lsp.sumneko_lua.setup {
+nvim_lsp.lua_ls.setup {
   -- on_attach = format,
   settings = {
     Lua = {

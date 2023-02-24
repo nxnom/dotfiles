@@ -71,4 +71,4 @@ keymap.set('v', '<Leader>[[', 'di[]<Esc>hp', { noremap = true })
 keymap.set('v', '<Leader>{{', 'di{}<Esc>hp', { noremap = true })
 
 -- LSP
-keymap.set('n', '<Leader>fo', vim.lsp.buf.format)
+keymap.set('n', '<Leader>fm', vim.lsp.buf.format)
