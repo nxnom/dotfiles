@@ -1,29 +1,9 @@
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+
 local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
 
--- after the language server attaches to the current buffer
--- local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
-
--- local auto_format = function(_, bufnr)
---   vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
---   vim.api.nvim_create_autocmd("BufWritePre", {
---     group = augroup_format,
---     buffer = bufnr,
---     callback = function()
---       vim.lsp.buf.format({ bufnr = bufnr })
---     end,
---   })
--- end
-
--- local format = function(_, bufnr)
---   vim.keymap.set('n', '<Leader>fo', function()
---     vim.lsp.buf.format({ bufnr = bufnr })
---   end)
--- end
-
-local disable_format = function(client)
-  client.server_capabilities.document_formatting = false
-end
+local util = require 'lspconfig.util'
 
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').default_capabilities(
@@ -35,30 +15,13 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
--- https://flow.org/en/docs/install/
--- nvim_lsp.flow.setup {
---   capabilities = capabilities
--- }
-
-nvim_lsp.tsserver.setup {
-  init_options = {
-    preferences = { disableSuggestions = true },
-  },
-  cmd = { "typescript-language-server", "--stdio" },
-  capabilities = capabilities,
-  on_attach = disable_format,
-  single_file_support = true,
-}
-
 nvim_lsp.lua_ls.setup {
-  -- on_attach = format,
   settings = {
     Lua = {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
         globals = { 'vim' },
       },
-
       workspace = {
         -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
@@ -68,41 +31,70 @@ nvim_lsp.lua_ls.setup {
   },
 }
 
-nvim_lsp.html.setup {
+nvim_lsp.tsserver.setup {
+  init_options = {
+    preferences = { disableSuggestions = true },
+  },
+  cmd = { "typescript-language-server", "--stdio" },
   capabilities = capabilities,
-  on_attach = disable_format,
+  single_file_support = true,
+}
+
+local function get_typescript_server_path(root_dir)
+  local found_ts = ''
+  local function check_dir(path)
+    found_ts = util.path.join(path, 'node_modules', 'typescript', 'lib')
+    if util.path.exists(found_ts) then
+      return path
+    end
+  end
+  if util.search_ancestors(root_dir, check_dir) then
+    return found_ts
+  else
+    local global_ts = vim.fn.system("echo -n $TYPESCRIPT_PATH")
+    if (global_ts == '') then
+      vim.notify(
+        'Could not find typescript folder. Please set $TYPESCRIPT_PATH to the location of the typescript folder or install typescript in project locally. Typescript is required to enable vue-language-server.',
+        vim.log.levels.WARN
+      )
+    end
+    return util.path.join(global_ts, 'lib')
+  end
+end
+
+-- Vue.js
+nvim_lsp.volar.setup {
+  capabilities = capabilities,
+  on_new_config = function(new_config, new_root_dir)
+    new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
+  end,
 }
 
 nvim_lsp.emmet_ls.setup({
-  capabilities = capabilities,
-  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+  filetypes = { 'html', 'react', 'typescriptreact', 'javascriptreact', 'vue', 'css', 'sass', 'scss', 'less' },
   init_options = {
     html = {
       options = {
         -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-        ["bem.enabled"] = true,
+            ["bem.enabled"] = true,
       },
     },
-  }
+  },
+  autostart = false,
 })
 
+nvim_lsp.html.setup { capabilities = capabilities }
 -- css
-nvim_lsp.cssls.setup {
-  capabilities = capabilities,
-  on_attach = disable_format,
-}
-
-nvim_lsp.tailwindcss.setup {
-  autostart = false;
-}
+nvim_lsp.cssls.setup { capabilities = capabilities }
+nvim_lsp.tailwindcss.setup { autostart = false }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-  underline = true,
-  update_in_insert = false,
-  virtual_text = { spacing = 4, prefix = "●" },
-  severity_sort = true,
-})
+    underline = true,
+    update_in_insert = false,
+    virtual_text = { spacing = 4, prefix = "●" },
+    severity_sort = true,
+  })
 
 -- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -120,3 +112,6 @@ vim.diagnostic.config({
     source = "always", -- Or "if_many"
   },
 })
+
+-- Keymaps
+vim.keymap.set('n', '<Leader>fm', vim.lsp.buf.format)
