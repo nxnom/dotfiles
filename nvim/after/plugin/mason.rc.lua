@@ -6,5 +6,13 @@ if (not status2) then return end
 mason.setup()
 
 lspconfig.setup {
-  ensure_installed = { "lua_ls" },
+  ensure_installed = {
+    'tsserver',
+    'lua_ls',
+    'volar',
+    'tailwindcss',
+    'html',
+    'cssls',
+    'emmet_ls',
+  },
 }

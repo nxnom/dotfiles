@@ -15,7 +15,11 @@ ts.setup {
     "yaml",
     "css",
     "html",
-    "lua"
+    "lua",
+    "markdown",
+    "javascript",
+    "typescript",
+    "vue"
   },
   autotag = {
     enable = true,
