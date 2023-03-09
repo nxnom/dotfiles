@@ -88,7 +88,8 @@ packer.startup(function(use)
   -- use 'ellisonleao/gruvbox.nvim'
   use 'folke/tokyonight.nvim'
   use 'tanvirtin/monokai.nvim'
-  --
+  use { "catppuccin/nvim", as = "catppuccin" }
+
   use 'github/copilot.vim'
 
   -- markdown previewer
