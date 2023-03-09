@@ -82,12 +82,12 @@ packer.startup(function(use)
   use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
 
   -- Themes
-  use 'projekt0n/github-nvim-theme'
+  -- use 'projekt0n/github-nvim-theme'
   -- use 'tamelion/neovim-molokai'
   -- use 'ful1e5/onedark.nvim'
   -- use 'ellisonleao/gruvbox.nvim'
-  use 'folke/tokyonight.nvim'
-  use 'tanvirtin/monokai.nvim'
+  -- use 'folke/tokyonight.nvim'
+  -- use 'tanvirtin/monokai.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
 
   use 'github/copilot.vim'
