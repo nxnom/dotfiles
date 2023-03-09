@@ -19,7 +19,10 @@ ts.setup {
     "markdown",
     "javascript",
     "typescript",
-    "vue"
+    "vue",
+    "rust",
+    "bash",
+    "ruby",
   },
   autotag = {
     enable = true,

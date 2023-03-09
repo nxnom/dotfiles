@@ -15,6 +15,10 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
+nvim_lsp.rust_analyzer.setup {
+  capabilities = capabilities,
+}
+
 nvim_lsp.lua_ls.setup {
   settings = {
     Lua = {
@@ -76,7 +80,7 @@ nvim_lsp.emmet_ls.setup({
     html = {
       options = {
         -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-            ["bem.enabled"] = true,
+        ["bem.enabled"] = true,
       },
     },
   },
