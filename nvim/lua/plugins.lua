@@ -87,6 +87,7 @@ packer.startup(function(use)
   -- use 'ful1e5/onedark.nvim'
   -- use 'ellisonleao/gruvbox.nvim'
   use 'folke/tokyonight.nvim'
+  use 'tanvirtin/monokai.nvim'
   --
   use 'github/copilot.vim'
 
