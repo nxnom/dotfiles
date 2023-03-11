@@ -17,6 +17,20 @@ capabilities.textDocument.foldingRange = {
 
 nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      assist = {
+        importGranularity = "module",
+        importPrefix = "by_self",
+      },
+      cargo = {
+        loadOutDirsFromCheck = true,
+      },
+      procMacro = {
+        enable = true,
+      },
+    },
+  },
 }
 
 nvim_lsp.lua_ls.setup {
