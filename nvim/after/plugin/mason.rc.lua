@@ -7,7 +7,7 @@ mason.setup()
 
 lspconfig.setup {
   ensure_installed = {
-    -- 'rust_analyzer',
+    'rust_analyzer',
     'tsserver',
     'lua_ls',
     'volar',
@@ -15,5 +15,6 @@ lspconfig.setup {
     'html',
     'cssls',
     'emmet_ls',
+    'solargraph'
   },
 }

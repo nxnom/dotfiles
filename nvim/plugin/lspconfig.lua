@@ -102,9 +102,7 @@ nvim_lsp.emmet_ls.setup({
 })
 
 -- Ruby
-nvim_lsp.solargraph.setup {
-  capabilities = capabilities,
-}
+nvim_lsp.solargraph.setup { capabilities = capabilities }
 
 nvim_lsp.html.setup { capabilities = capabilities }
 -- css
