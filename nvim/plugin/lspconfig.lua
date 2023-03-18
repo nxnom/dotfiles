@@ -101,6 +101,11 @@ nvim_lsp.emmet_ls.setup({
   autostart = false,
 })
 
+-- Ruby
+nvim_lsp.solargraph.setup {
+  capabilities = capabilities,
+}
+
 nvim_lsp.html.setup { capabilities = capabilities }
 -- css
 nvim_lsp.cssls.setup { capabilities = capabilities }
