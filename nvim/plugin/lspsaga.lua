@@ -2,6 +2,14 @@ local status, saga = pcall(require, "lspsaga")
 if (not status) then return end
 
 saga.setup {
+  ui = {
+    kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+    border = 'single',
+    winblend = 0,
+    colors = {
+      normal_bg = '#1c1c19',
+    }
+  },
   request_timeout = 8000,
   lightbulb = {
     enable = true,
@@ -14,14 +22,6 @@ saga.setup {
   },
   symbol_in_winbar = {
     enable = false,
-  },
-  ui = {
-    -- title = true,
-    border = 'single',
-    winblend = 0,
-    colors = {
-      normal_bg = '#1c1c19',
-    }
   },
   outline = {
     win_position = 'right',
@@ -57,6 +57,6 @@ vim.keymap.set('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', opts)
 vim.keymap.set('n', '<Leader>ca', '<Cmd>Lspsaga code_action<CR>', opts)
 vim.keymap.set('n', 'gp', '<Cmd>Lspsaga peek_definition<CR>', opts)
 vim.keymap.set('n', '<Leader>rn', '<Cmd>Lspsaga rename<CR>', opts)
-vim.keymap.set('n', '<Leader>oo', '<Cmd>Lspsaga outline<CR>', opts)
+vim.keymap.set('n', '<Leader>lo', '<Cmd>Lspsaga outline<CR>', opts)
 vim.keymap.set('n', '""', '<Cmd>Lspsaga term_toggle<CR>', opts)
 vim.keymap.set('t', '""', '<Cmd>Lspsaga term_toggle<CR>', opts)

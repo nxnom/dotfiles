@@ -1,3 +1,4 @@
+-- https://neovim.io/doc/user/lsp.html
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
 local HOME = vim.fn.expand('$HOME')
