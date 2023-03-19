@@ -1,5 +1,7 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
+local HOME = vim.fn.expand('$HOME')
+
 local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
 
@@ -102,7 +104,31 @@ nvim_lsp.emmet_ls.setup({
 })
 
 -- Ruby
-nvim_lsp.solargraph.setup { capabilities = capabilities }
+-- I use solargraph mainly for formatting and linting
+nvim_lsp.solargraph.setup {
+  init_options = {
+    hover = false,
+    references = false,
+    rename = false,
+    definitions = false,
+  }
+}
+
+-- Sorbet is better than solargraph for autocompletion and lsp support
+nvim_lsp.sorbet.setup {
+  on_new_config = function(new_config, root_dir)
+    local cmd = { "srb", "tc", "--lsp", "--typed=true" }
+
+    local path = util.path.join(root_dir, 'sorbet')
+    if util.path.exists(path) == false then
+      -- save sorbet folder in .config folder
+      table.insert(cmd, "--dir=" .. util.path.join(HOME, ".config", "sorbet"))
+    end
+    new_config.cmd = cmd
+  end
+}
+-- End Ruby
+
 
 nvim_lsp.html.setup { capabilities = capabilities }
 -- css
