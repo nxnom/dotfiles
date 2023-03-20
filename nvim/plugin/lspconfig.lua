@@ -123,7 +123,7 @@ nvim_lsp.sorbet.setup {
     local path = util.path.join(root_dir, 'sorbet')
     if util.path.exists(path) == false then
       -- save sorbet folder in .config folder
-      table.insert(cmd, "--dir=" .. util.path.join(HOME, ".config", "sorbet"))
+      table.insert(cmd, "--dir=" .. util.path.join(HOME, ".config", "sorbet_config", "sorbet"))
     end
     new_config.cmd = cmd
   end
