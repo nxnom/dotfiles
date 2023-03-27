@@ -130,6 +130,15 @@ nvim_lsp.sorbet.setup {
 }
 -- End Ruby
 
+-- See sqlls repo for more info and how to setup for each project
+-- https://github.com/joe-re/sql-language-server
+-- Visit - https://github.com/joe-re/sql-language-server/tree/release/packages/sqlint for linter options
+nvim_lsp.sqlls.setup {
+  root_dir = function(fname)
+    return util.root_pattern(".git", "*.sql", "*.mysql", ".sqllsrc.json")(fname) or util.path.dirname(fname)
+  end
+}
+
 
 nvim_lsp.html.setup { capabilities = capabilities }
 -- css
@@ -162,4 +171,6 @@ vim.diagnostic.config({
 })
 
 -- Keymaps
-vim.keymap.set('n', '<Leader>fm', vim.lsp.buf.format)
+vim.keymap.set('n', '<Leader>fm', function()
+  vim.lsp.buf.format()
+end)

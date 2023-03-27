@@ -23,6 +23,7 @@ ts.setup {
     "rust",
     "bash",
     "ruby",
+    "sql"
   },
   autotag = {
     enable = true,
