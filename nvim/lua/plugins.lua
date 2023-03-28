@@ -91,6 +91,7 @@ packer.startup(function(use)
   use { "catppuccin/nvim", as = "catppuccin" }
 
   use 'github/copilot.vim'
+  use 'nanotee/sqls.nvim'
 
   -- markdown previewer
   use({

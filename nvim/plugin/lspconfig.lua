@@ -130,15 +130,18 @@ nvim_lsp.sorbet.setup {
 }
 -- End Ruby
 
--- See sqlls repo for more info and how to setup for each project
--- https://github.com/joe-re/sql-language-server
--- Visit - https://github.com/joe-re/sql-language-server/tree/release/packages/sqlint for linter options
-nvim_lsp.sqlls.setup {
-  root_dir = function(fname)
-    return util.root_pattern(".git", "*.sql", "*.mysql", ".sqllsrc.json")(fname) or util.path.dirname(fname)
+-- DBMS
+-- Unfortunately, sqls is not maintained anymore 
+-- But work better than other lsp servers for sql -_-
+-- Check this link to see how to setup sqls
+-- https://github.com/lighttiger2505/sqls
+nvim_lsp.sqls.setup {
+  on_attach = function(client, bufnr)
+    -- https://github.com/nanotee/sqls.nvim
+    require('sqls').on_attach(client, bufnr)
   end
 }
-
+-- End DBMS
 
 nvim_lsp.html.setup { capabilities = capabilities }
 -- css
