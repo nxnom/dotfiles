@@ -1,6 +1,8 @@
 local status, lspkind = pcall(require, "lspkind")
 if (not status) then return end
 
+-- No longer used cuz I'm sick of these icons in my cmp menu
+
 lspkind.init({
   -- enables text annotations
   --
