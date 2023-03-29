@@ -22,8 +22,7 @@ ts.setup {
     "vue",
     "rust",
     "bash",
-    "ruby",
-    "sql"
+    "ruby"
   },
   autotag = {
     enable = true,

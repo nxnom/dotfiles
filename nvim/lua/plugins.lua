@@ -28,10 +28,12 @@ packer.startup(function(use)
   -- LSP
   use 'neovim/nvim-lspconfig' -- LSP
   use 'glepnir/lspsaga.nvim'  -- Use LSP to use go to def, code action, errors ,etc...
-  -- use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
+  -- use 'hrsh7th/cmp-buffer'    -- nvim-cmp source for buffer words
   use 'hrsh7th/cmp-nvim-lsp'  -- nvim-cmp source for neovim's built-in LSP
   use 'hrsh7th/nvim-cmp'      -- Completion
   use 'L3MON4D3/Luasnip'
+  use 'rafamadriz/friendly-snippets'
+  use 'saadparwaiz1/cmp_luasnip'
 
   use 'nanotee/sqls.nvim'
   use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim' }
@@ -91,4 +93,13 @@ packer.startup(function(use)
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   })
+
+  -- Highlight, the current code block using treesitter
+  -- Amazing plugin
+  use {
+    "folke/twilight.nvim",
+    config = function()
+      require("twilight").setup {}
+    end
+  }
 end)

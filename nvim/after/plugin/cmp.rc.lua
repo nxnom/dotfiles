@@ -1,12 +1,21 @@
 -- -@diagnostic disable: need-check-nil
 local status, cmp = pcall(require, "cmp")
 if (not status) then return end
--- local lspkind = require 'lspkind'
+
+local luasnip = require("luasnip")
+
+require("luasnip.loaders.from_vscode").lazy_load()
+
+-- luasnip.config.set_config({
+--   history = true,
+--   updateevents = "TextChanged,TextChangedI",
+--   enable_autosnippets = true,
+-- })
 
 cmp.setup({
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
   mapping = cmp.mapping.preset.insert({
@@ -19,8 +28,6 @@ cmp.setup({
       select = true
     }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
-      local luasnip = require('luasnip')
-
       if luasnip and luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       else
@@ -29,8 +36,10 @@ cmp.setup({
     end, { 'i', 's', 'c' })
   }),
   sources = cmp.config.sources({
+    { name = 'luasnip' },
     { name = 'nvim_lsp' },
-    { name = 'buffer' },
+    -- I hate this source, so annoying
+    -- { name = 'buffer',  max_item_count = 2 },
   }),
   formatting = {
     -- format = lspkind.cmp_format({ with_text = false, maxwidth = 50 })
