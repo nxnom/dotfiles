@@ -52,7 +52,3 @@ zstyle ':vcs_info:git:*' actionformats ' (%b|%a )%u%c'
 ZSH_PLUGINS=$ZDOTDIR/plugins
 source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# show fastfetch to show system information on startup
-fastfetchPath=$(builtin whence -p fastfetch) # whence is like "type" but it's for zsh
-[ -f $fastfetchPath ] && fastfetch
