@@ -15,6 +15,7 @@ lspconfig.setup {
     'html',
     'cssls',
     'emmet_ls',
-    'solargraph'
+    'solargraph',
+    -- 'sqls'
   },
 }

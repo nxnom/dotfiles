@@ -17,6 +17,7 @@ ts.setup {
     "html",
     "lua",
     "markdown",
+    "markdown_inline",
     "javascript",
     "typescript",
     "vue",

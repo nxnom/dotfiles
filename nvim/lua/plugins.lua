@@ -44,9 +44,9 @@ packer.startup(function(use)
   use 'mxsdev/nvim-dap-vscode-js'
 
   -- Download and compiled Debuggers excutables
-  use { "microsoft/vscode-js-debug", opt = true, run = "npm install --legacy-peer-deps && npm run compile" }
-  use { "microsoft/vscode-chrome-debug", opt = true, run = "npm install && npm run build" }
-  use { "Dart-Code/Dart-Code", opt = true, run = "npm install && npx webpack --mode production" }
+  -- use { "microsoft/vscode-js-debug", opt = true, run = "npm install --legacy-peer-deps && npm run compile" }
+  -- use { "microsoft/vscode-chrome-debug", opt = true, run = "npm install && npm run build" }
+  -- use { "Dart-Code/Dart-Code", opt = true, run = "npm install && npx webpack --mode production" }
   -- end Debuggers
 
   use {
