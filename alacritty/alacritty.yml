@@ -46,22 +46,22 @@ window:
 font:
   # Normal (roman) font face
   normal:
-    family: Hack Nerd Font Mono
+    family: SpaceMono Nerd Font
     style: Regular
 
   # Bold font face
   bold:
-    family: Hack Nerd Font Mono
+    family: SpaceMono Nerd Font
     style: Bold
 
   # Italic font face
   italic:
-    family: Hack Nerd Font Mono
+    family: SpaceMono Nerd Font
     style: Italic
 
   # Bold italic font face
   bold_italic:
-    family: Hack Nerd Font Mono
+    family: SpaceMono Nerd Font
     style: Bold Italic
 
   # Point size
