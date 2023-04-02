@@ -1,7 +1,7 @@
 -- https://neovim.io/doc/user/lsp.html
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
-local HOME = vim.fn.expand('$HOME')
+local HOME = os.getenv('HOME')
 
 local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
@@ -118,12 +118,14 @@ nvim_lsp.solargraph.setup {
 -- Sorbet is better than solargraph for autocompletion and lsp support
 nvim_lsp.sorbet.setup {
   on_new_config = function(new_config, root_dir)
-    local cmd = { "srb", "tc", "--lsp", "--typed=true" }
+    local cmd = { "srb", "tc", "--lsp", "--disable-watchman", "--typed=true" }
 
     local path = util.path.join(root_dir, 'sorbet')
     if util.path.exists(path) == false then
-      -- save sorbet folder in .config folder
-      table.insert(cmd, "--dir=" .. util.path.join(HOME, ".config", "sorbet_config", "sorbet"))
+      -- fallback to default sorbet path
+      -- Install sorbet locally for more intellisense and auto completion
+      -- fallback is just for stdlib 
+      table.insert(cmd, "--dir=" .. util.path.join(HOME, ".config", "nvim", "configs", "sorbet"))
     end
     new_config.cmd = cmd
   end
@@ -131,7 +133,7 @@ nvim_lsp.sorbet.setup {
 -- End Ruby
 
 -- DBMS
--- Unfortunately, sqls is not maintained anymore 
+-- Unfortunately, sqls is not maintained anymore
 -- But work better than other lsp servers for sql -_-
 -- Check this link to see how to setup sqls
 -- https://github.com/lighttiger2505/sqls
