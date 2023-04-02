@@ -110,7 +110,7 @@ nvim_lsp.emmet_ls.setup({
 -- I use solargraph mainly for formatting and linting
 nvim_lsp.solargraph.setup {
   init_options = {
-    hover = false,
+    hover = true,
     references = false,
     rename = false,
     definitions = false,

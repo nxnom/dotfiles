@@ -1,6 +1,8 @@
 local status, saga = pcall(require, "lspsaga")
 if (not status) then return end
 
+local api, util = vim.api, vim.lsp.util
+
 saga.setup {
   ui = {
     kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
@@ -52,6 +54,62 @@ saga.setup {
     whole_project = true,
   },
 }
+
+-- If there are multiple LSP servers attached to the current buffer, this function
+-- will display the hover information from all of them.
+-- Lspsaga only displays the hover information from the first LSP server.
+local multi_lsp_hover = function()
+  local hover = require('lspsaga.hover')
+
+  if hover.preview_winid and api.nvim_win_is_valid(hover.preview_winid) then
+    api.nvim_set_current_win(hover.preview_winid)
+    return
+  end
+
+  if vim.bo.filetype == 'help' then
+    api.nvim_feedkeys('K', 'ni', true)
+    return
+  end
+
+  local params = util.make_position_params()
+  local response = vim.lsp.buf_request_sync(0, 'textDocument/hover', params, 5000)
+  local clients = vim.lsp.buf_get_clients()
+
+  local value = ''
+
+  if type(response.contents) == 'string' then
+    value = value .. '\n' .. response.contents
+  elseif response and #response > 0 then
+    for i = 1, #response do
+      if response[i] and response[i].result and response[i].result.contents then
+        local result_contents = response[i].result.contents
+        local more_lines = util.convert_input_to_markdown_lines(result_contents)
+        util.trim_empty_lines(more_lines)
+        if (#more_lines == 0) then return end
+
+        local name = clients[i].name
+        if name and #response > 1 then
+          value = value .. '\n   \n------------------------------\n'
+          value = '\n' .. value .. '\n    *** ' .. name .. ' ***\n'
+          value = value .. '------------------------------\n'
+        end
+
+        value = value .. '\n' .. table.concat(more_lines, '\n') .. '  '
+      end
+    end
+  end
+
+  if value == '' then
+    print('No hover available')
+    return
+  end
+
+  local res = { value = value, kind = 'markdown', }
+  hover:open_floating_preview(res)
+end
+
+-- Override the default hover function
+require('lspsaga.hover').render_hover_doc = multi_lsp_hover
 
 -- noremap = true,
 local opts = { silent = true }
