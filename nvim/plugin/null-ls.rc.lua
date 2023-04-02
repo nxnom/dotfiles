@@ -9,10 +9,9 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup {
   sources = {
     null_ls.builtins.formatting.prettierd.with({
-      -- just put prettier config in home dir -_- I don't know why this is not working either
-      -- env = {
-      --   PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/utils/linter-config/.prettierrc.json"),
-      -- },
+      env = {
+        PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/utils/linter-config/.prettierrc.js"),
+      },
     }),
     null_ls.builtins.diagnostics.eslint_d.with({
       diagnostics_format = '[eslint_d] #{m}\n(#{c})'
