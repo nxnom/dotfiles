@@ -6,6 +6,8 @@ local HOME = os.getenv('HOME')
 local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
 
+vim.lsp.set_log_level("error")
+
 local util = require 'lspconfig.util'
 
 -- Set up completion using nvim_cmp with LSP source
