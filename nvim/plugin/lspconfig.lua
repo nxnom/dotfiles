@@ -114,6 +114,7 @@ nvim_lsp.solargraph.setup {
     references = false,
     rename = false,
     definitions = false,
+    completion = false,
   }
 }
 
@@ -126,7 +127,7 @@ nvim_lsp.sorbet.setup {
     if util.path.exists(path) == false then
       -- fallback to default sorbet path
       -- Install sorbet locally for more intellisense and auto completion
-      -- fallback is just for stdlib 
+      -- fallback is just for stdlib
       table.insert(cmd, "--dir=" .. util.path.join(HOME, ".config", "nvim", "configs", "sorbet"))
     end
     new_config.cmd = cmd
