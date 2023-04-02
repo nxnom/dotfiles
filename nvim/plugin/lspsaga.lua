@@ -23,6 +23,11 @@ saga.setup {
   symbol_in_winbar = {
     enable = false,
   },
+  finder = {
+    keys = {
+      expand_or_jump = '<CR>',
+    },
+  },
   outline = {
     win_position = 'right',
     win_with = '',
@@ -54,6 +59,7 @@ vim.keymap.set('n', '<Leader>er', '<Cmd>Lspsaga diagnostic_jump_next<CR>', opts)
 vim.keymap.set('n', '<Leader>eu', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
 vim.keymap.set('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
 vim.keymap.set('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', opts)
+vim.keymap.set('n', 'gt', '<Cmd>Lspsaga goto_definition<CR>', opts)
 vim.keymap.set('n', '<Leader>ca', '<Cmd>Lspsaga code_action<CR>', opts)
 vim.keymap.set('n', 'gp', '<Cmd>Lspsaga peek_definition<CR>', opts)
 vim.keymap.set('n', '<Leader>rn', '<Cmd>Lspsaga rename<CR>', opts)
