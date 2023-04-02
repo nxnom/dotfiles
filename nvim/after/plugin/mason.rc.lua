@@ -7,15 +7,16 @@ mason.setup()
 
 lspconfig.setup {
   ensure_installed = {
-    'rust_analyzer',
-    'tsserver',
     'lua_ls',
-    'volar',
-    'tailwindcss',
     'html',
     'cssls',
     'emmet_ls',
-    'solargraph',
+    'tailwindcss',
+    'tsserver',
+    'rust_analyzer',
+    'volar', -- vue-lsp
+    'solargraph', -- ruby-lsp
+    'sorbet', -- ruby-lsp
     -- 'sqls'
   },
 }
