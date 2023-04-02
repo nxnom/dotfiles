@@ -71,41 +71,46 @@ local multi_lsp_hover = function()
     return
   end
 
-  local params = util.make_position_params()
-  local response = vim.lsp.buf_request_sync(0, 'textDocument/hover', params, 5000)
-  local clients = vim.lsp.buf_get_clients()
+  if hover.pending_request then
+    print('[Multi_lsp_hover] There is already a hover request, please wait for the response.')
+    return
+  end
 
+  hover.pending_request = true
+
+  local params = util.make_position_params()
+  local clients = vim.lsp.buf_get_clients()
   local value = ''
 
-  if type(response.contents) == 'string' then
-    value = value .. '\n' .. response.contents
-  elseif response and #response > 0 then
+  vim.lsp.buf_request_all(0, 'textDocument/hover', params, function(response)
+    hover.pending_request = false
+
     for i = 1, #response do
       if response[i] and response[i].result and response[i].result.contents then
-        local result_contents = response[i].result.contents
-        local more_lines = util.convert_input_to_markdown_lines(result_contents)
-        util.trim_empty_lines(more_lines)
-        if (#more_lines == 0) then return end
+        local content = response[i].result.contents.value
+        if not content then return end
 
         local name = clients[i].name
+
+        -- Add a separator between hover information from different LSP servers if there are more than one.
         if name and #response > 1 then
           value = value .. '\n   \n------------------------------\n'
           value = '\n' .. value .. '\n    *** ' .. name .. ' ***\n'
           value = value .. '------------------------------\n'
         end
 
-        value = value .. '\n' .. table.concat(more_lines, '\n') .. '  '
+        value = value .. content .. '  '
       end
     end
-  end
 
-  if value == '' then
-    print('No hover available')
-    return
-  end
+    if value == '' then
+      print('No hover available')
+      return
+    end
 
-  local res = { value = value, kind = 'markdown', }
-  hover:open_floating_preview(res)
+    local res = { value = value, kind = 'markdown' }
+    hover:open_floating_preview(res)
+  end)
 end
 
 -- Override the default hover function
