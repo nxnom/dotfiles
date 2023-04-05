@@ -121,7 +121,16 @@ nvim_lsp.solargraph.setup {
 -- Sorbet is better than solargraph for autocompletion and lsp support
 nvim_lsp.sorbet.setup {
   on_new_config = function(new_config, root_dir)
-    local cmd = { "srb", "tc", "--lsp", "--disable-watchman", "--typed=true" }
+    local cmd = {
+      "srb",
+      "tc",
+      "--lsp",
+      "--disable-watchman",
+      "--typed=true",
+      -- Check this link to understand error code
+      -- https://sorbet.org/docs/error-reference
+      "--suppress-error-code=3003,3009,5002,5022,5037,7001,7003,7019"
+    }
 
     local path = util.path.join(root_dir, 'sorbet')
     if util.path.exists(path) == false then
