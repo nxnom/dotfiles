@@ -129,7 +129,7 @@ nvim_lsp.sorbet.setup {
       "--typed=true",
       -- Check this link to understand error code
       -- https://sorbet.org/docs/error-reference
-      "--suppress-error-code=3003,3009,5002,5022,5037,7001,7003,7019"
+      "--suppress-error-code=3003,3009,5002,5022,5037,5067,7001,7003,7019"
     }
 
     local path = util.path.join(root_dir, 'sorbet')
