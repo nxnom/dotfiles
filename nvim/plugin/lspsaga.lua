@@ -80,9 +80,9 @@ local multi_lsp_hover = function()
 
   local params = util.make_position_params()
   local clients = vim.lsp.buf_get_clients()
-  local value = ''
 
   vim.lsp.buf_request_all(0, 'textDocument/hover', params, function(response)
+    local value = ''
     hover.pending_request = false
 
     for i = 1, #response do
@@ -103,10 +103,10 @@ local multi_lsp_hover = function()
       end
     end
 
-    if value == '' then
-      print('No hover available')
-      return
-    end
+    -- if value == '' then
+    --   print('No hover available')
+    --   return
+    -- end
 
     local res = { value = value, kind = 'markdown' }
     hover:open_floating_preview(res)
