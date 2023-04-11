@@ -114,11 +114,12 @@ nvim_lsp.solargraph.setup {
     references = false,
     rename = false,
     definitions = false,
-    completion = false,
+    completion = true,
   }
 }
 
--- Sorbet is better than solargraph for autocompletion and lsp support
+-- Sorbet is better than solargraph for autocompletion and lsp support in some cases 
+-- Because of type checking and type inference
 nvim_lsp.sorbet.setup {
   on_new_config = function(new_config, root_dir)
     local cmd = {
