@@ -3,24 +3,30 @@ if (not status) then return end
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
+local d = null_ls.builtins.diagnostics
+local f = null_ls.builtins.formatting
+local c = null_ls.builtins.code_actions
+
 -- Docs
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc
 -- https://docs.rockylinux.org/books/nvchad/custom/plugins/null_ls/#
 null_ls.setup {
   sources = {
-    null_ls.builtins.formatting.prettierd.with({
+    f.prettierd.with({
       env = {
         PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/configs/linter-configs/.prettierrc.js"),
       },
     }),
-    null_ls.builtins.diagnostics.eslint_d.with({
+    d.eslint_d.with({
       diagnostics_format = '[eslint_d] #{m}\n(#{c})'
     }),
-    null_ls.builtins.code_actions.eslint_d,
-    null_ls.builtins.diagnostics.tidy.with({
+    c.eslint_d,
+    d.tidy.with({
       diagnostics_format = '[tidy] #{m}\n(#{c})',
       args = { "--drop-empty-elements", "no", "--warn-proprietary-attributes", "no" },
     }), -- to diagnostics html
+    d.protolint,
+    f.protolint
     -- null_ls.builtins.hover.dictionary
   },
 }

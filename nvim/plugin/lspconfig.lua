@@ -190,5 +190,5 @@ vim.diagnostic.config({
 
 -- Keymaps
 vim.keymap.set('n', '<Leader>fm', function()
-  vim.lsp.buf.format()
+  vim.lsp.buf.format({ timeout_ms = 2000 })
 end)
