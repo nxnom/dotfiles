@@ -5,3 +5,4 @@ alias adbm='adb connect 192.168.1.3:1234'
 alias sls='live-server .'
 alias c=clear
 alias pn=pnpm
+alias icat='kitty +kitten icat'
