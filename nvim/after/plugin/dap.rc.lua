@@ -58,8 +58,6 @@ vim.keymap.set('n', '<leader>dl', function()
   dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
 end)
 
-dap.terminate(nil, nil, function() end)
-
 require("dap-vscode-js").setup({
   adapters = {
     "pwa-node",
@@ -155,7 +153,7 @@ vim.keymap.set('n', '<leader>dk', function()
   dapui.eval(nil, { enter = true })
 end)
 vim.keymap.set('n', '<leader>dU', function()
-  dapui.float_element(nil, { enter = true })
+  dapui.float_element('Float', { enter = true })
 end)
 vim.keymap.set('n', '<leader>df', function()
   dapui.float_element('Scopes', { enter = true })
