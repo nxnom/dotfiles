@@ -58,7 +58,15 @@ saga.setup {
 -- If there are multiple LSP servers attached to the current buffer, this function
 -- will display the hover information from all of them.
 -- Lspsaga only displays the hover information from the first LSP server.
-local multi_lsp_hover = function()
+local custom_hover = function()
+  local filetype = vim.bo.filetype
+  local multi_lsp_files = { 'ruby' }
+
+  if vim.tbl_contains(multi_lsp_files, filetype) ~= true then
+    vim.cmd('Lspsaga hover_doc')
+    return
+  end
+
   local hover = require('lspsaga.hover')
 
   if hover.preview_winid and api.nvim_win_is_valid(hover.preview_winid) then
@@ -113,14 +121,11 @@ local multi_lsp_hover = function()
   end)
 end
 
--- Override the default hover function
-require('lspsaga.hover').render_hover_doc = multi_lsp_hover
-
 -- noremap = true,
 local opts = { silent = true }
 vim.keymap.set('n', '<Leader>er', '<Cmd>Lspsaga diagnostic_jump_next<CR>', opts)
 vim.keymap.set('n', '<Leader>eu', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
-vim.keymap.set('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
+vim.keymap.set('n', 'K', custom_hover, opts)
 vim.keymap.set('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', opts)
 vim.keymap.set('n', 'gt', '<Cmd>Lspsaga goto_definition<CR>', opts)
 vim.keymap.set('n', '<Leader>ca', '<Cmd>Lspsaga code_action<CR>', opts)
