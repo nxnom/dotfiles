@@ -62,12 +62,15 @@ local custom_hover = function()
   local filetype = vim.bo.filetype
   local multi_lsp_files = { 'ruby' }
 
+  local hover = require('lspsaga.hover')
+
   if vim.tbl_contains(multi_lsp_files, filetype) ~= true then
     vim.cmd('Lspsaga hover_doc')
+    -- this line is require to reset the pending_request or it won't work after hovering single/zero lsp server
+    hover.pending_request = false
     return
   end
 
-  local hover = require('lspsaga.hover')
 
   if hover.preview_winid and api.nvim_win_is_valid(hover.preview_winid) then
     api.nvim_set_current_win(hover.preview_winid)
