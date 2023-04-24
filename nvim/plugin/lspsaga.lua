@@ -111,10 +111,10 @@ local custom_hover = function()
       end
     end
 
-    -- if value == '' then
-    --   print('No hover available')
-    --   return
-    -- end
+    if value == '' then
+      print('No hover available')
+      return
+    end
 
     local res = { value = value, kind = 'markdown' }
     hover:open_floating_preview(res)
