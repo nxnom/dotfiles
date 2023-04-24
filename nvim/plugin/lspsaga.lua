@@ -87,7 +87,7 @@ local custom_hover = function()
   hover.pending_request = true
 
   local params = util.make_position_params()
-  local clients = vim.lsp.buf_get_clients()
+  local clients = vim.lsp.get_active_clients({ buffer = 0 })
 
   vim.lsp.buf_request_all(0, 'textDocument/hover', params, function(response)
     local value = ''
