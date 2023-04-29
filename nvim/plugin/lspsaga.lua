@@ -100,6 +100,7 @@ local custom_hover = function()
       if response[i] and response[i].result and response[i].result.contents then
         local content = response[i].result.contents.value
         if not content then return end
+        if not clients[i] then return end
 
         local name = clients[i].name
 

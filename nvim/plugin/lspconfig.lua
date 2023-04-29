@@ -107,7 +107,7 @@ nvim_lsp.emmet_ls.setup({
 })
 
 -- Ruby
--- I use solargraph mainly for formatting and linting
+-- ** Use with yard for documentation eg. `yard gems gem_name` to generate documentation
 nvim_lsp.solargraph.setup {
   init_options = {
     hover = true,
@@ -118,8 +118,8 @@ nvim_lsp.solargraph.setup {
   }
 }
 
--- Sorbet is better than solargraph for autocompletion and lsp support in some cases 
--- Because of type checking and type inference
+-- Sorbet is better than solargraph in type checking and type inference
+-- And also better support for stdlib intellisense and auto completion.
 nvim_lsp.sorbet.setup {
   on_new_config = function(new_config, root_dir)
     local cmd = {
