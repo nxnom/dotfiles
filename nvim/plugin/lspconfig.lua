@@ -107,14 +107,14 @@ nvim_lsp.emmet_ls.setup({
 })
 
 -- Ruby
--- ** Use with yard for documentation eg. `yard gems gem_name` to generate documentation
+-- Use with yard for documentation eg. `yard gems gem_name` to generate documentation
+-- Run `yard config --gem-install-yri` to generate YARD documentation automatically when you install new gems.
 nvim_lsp.solargraph.setup {
   init_options = {
     hover = true,
-    references = false,
     rename = false,
-    definitions = false,
     completion = true,
+    diagnostics = true,
   }
 }
 
