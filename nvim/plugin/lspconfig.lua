@@ -141,7 +141,10 @@ nvim_lsp.sorbet.setup {
       table.insert(cmd, "--dir=" .. util.path.join(HOME, ".config", "nvim", "configs", "sorbet"))
     end
     new_config.cmd = cmd
-  end
+  end,
+  on_attach = function(client, bufnr)
+    client.server_capabilities.definitionProvider = false
+  end,
 }
 -- End Ruby
 
