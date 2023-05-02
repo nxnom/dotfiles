@@ -1,0 +1,14 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "Gemfile"
+    - "Guardfile"
+    - "Rakefile"
+    - "node_modules/**/*"
+
+  DisplayCopNames: true
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
