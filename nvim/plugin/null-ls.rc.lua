@@ -14,7 +14,7 @@ null_ls.setup {
   sources = {
     f.prettierd.with({
       env = {
-        PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/configs/linter-configs/.prettierrc.js"),
+        PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/configs/.prettierrc.js"),
       },
     }),
     d.eslint_d.with({
