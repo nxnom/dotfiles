@@ -8,7 +8,16 @@ AllCops:
 
   DisplayCopNames: true
 
+Metrics/PerceivedComplexity:
+  Max: 20
+Metrics/CyclomaticComplexity:
+  Max: 20
+Metrics/MethodLength:
+  Max: 40
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
+Style/Documentation:
+  Enabled: false
