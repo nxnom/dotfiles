@@ -37,7 +37,7 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    { name = 'luasnip', max_item_count = 5 },
     -- I hate this source, so annoying
     -- { name = 'buffer',  max_item_count = 2 },
   }),
