@@ -1,6 +1,4 @@
 .zsh_*
 .zcomp*
 
-plugins/*
-!plugins/.gitkeep
 internal.zsh

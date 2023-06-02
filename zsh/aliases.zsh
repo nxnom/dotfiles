@@ -6,3 +6,4 @@ alias sls='live-server .'
 alias c=clear
 alias pn=pnpm
 alias icat='kitty +kitten icat'
+alias brew="HOMEBREW_NO_AUTO_UPDATE=1 brew"
