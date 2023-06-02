@@ -13,11 +13,11 @@ dotfiles=(
 
 for dotfile in "${dotfiles[@]}"; do
   echo "Creating symlink to $dotfile in .config directory."
-  ln -s "$current_dir/$dotfile" "$HOME/.config/$dotfile -f"
+  ln -sf "$current_dir/$dotfile" "$HOME/.config"
 done
 
 echo "Creating symlink to rubocop in .config directory."
-ln -s "$current_dir/nvim/configs/rubocop" "$HOME/.config/rubocop"
+ln -sf "$current_dir/nvim/configs/rubocop" "$HOME/.config"
 
 echo "Creating symlink to .eslintrc.js in home directory."
-ln -s "$current_dir/nvim/configs/.eslintrc.js" "$HOME/.eslintrc.js"
+ln -sf "$current_dir/nvim/configs/.eslintrc.js" "$HOME"
