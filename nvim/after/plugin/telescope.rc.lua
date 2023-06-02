@@ -29,7 +29,7 @@ telescope.setup {
       '-uu' -- **This is the setting not being respected**
     },
     file_ignore_patterns = {
-      ".git/", "node_modules", "build/", "dist/", "yarn.lock", "package-lock.json", ".cache/", ".idea/", "zsh/plugins/", "target/debug"
+      ".git/", "node_modules", "build/", "dist/", "yarn.lock", "package-lock.json", ".cache/", ".idea/", "zsh/plugins/", "target/debug", "log/"
     }
   },
   extensions = {
