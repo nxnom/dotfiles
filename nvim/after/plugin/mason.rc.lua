@@ -14,9 +14,13 @@ lspconfig.setup {
     'tailwindcss',
     'tsserver',
     'rust_analyzer',
-    'volar', -- vue-lsp
+    'volar',      -- vue-lsp
     'solargraph', -- ruby-lsp
-    'sorbet', -- ruby-lsp
-    -- 'sqls'
+    'sorbet',     -- ruby-lsp
+    -- 'eslint_d',
+    -- 'prettierd',
+    -- 'sqls',
+    -- 'buf',
+    -- 'protolint',
   },
 }
