@@ -53,7 +53,7 @@ flutter.setup {
   },
   -- flutter_path = "", -- <-- this takes priority over the lookup
   -- flutter_lookup_cmd = nil, -- example "dirname $(which flutter)" or "asdf where flutter"
-  fvm = false, -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
+  fvm = true, -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
   widget_guides = {
     enabled = false,
   },
