@@ -8,6 +8,7 @@ local on_attach = function()
   -- keymaps
   vim.keymap.set('n', '<Leader>fO', '<Cmd>FlutterOutlineToggle<CR>', {})
   vim.keymap.set('n', '<Leader>fr', '<Cmd>FlutterRestart<CR>', {})
+  vim.keymap.set('n', '<Leader>fd', '<Cmd>FlutterDevices<CR>', {})
   vim.keymap.set('n', '<Leader>fc', '<Cmd>FlutterLogClear<CR>', {})
   vim.keymap.set('n', '<Leader>fs', '<Cmd>FlutterRun<CR>', {})
   vim.keymap.set('n', '<Leader>fq', '<Cmd>FlutterQuit<CR>', {})
