@@ -20,6 +20,12 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
+nvim_lsp.clangd.setup {
+  capabilities = {
+    offsetEncoding = 'utf-16',
+  },
+}
+
 nvim_lsp.rust_analyzer.setup {
   capabilities = capabilities,
   settings = {
