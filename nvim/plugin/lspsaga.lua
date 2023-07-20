@@ -14,13 +14,7 @@ saga.setup {
   },
   request_timeout = 8000,
   lightbulb = {
-    enable = true,
-    enable_in_insert = true,
-    cache_code_action = true,
-    sign = true,
-    update_time = 150,
-    sign_priority = -1,
-    -- virtual_text = true,
+    enable = false,
   },
   symbol_in_winbar = {
     enable = false,
