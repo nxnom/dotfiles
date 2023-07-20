@@ -15,7 +15,7 @@ lspconfig.setup {
     'tsserver',
     'rust_analyzer',
     'volar',      -- vue-lsp
-    'solargraph', -- ruby-lsp
+    -- 'solargraph', -- ruby-lsp
     'sorbet',     -- ruby-lsp
     -- 'eslint_d',
     -- 'prettierd',
