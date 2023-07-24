@@ -9,6 +9,7 @@ dotfiles=(
   nvim
   tmux
   zsh
+  foot
 )
 
 for dotfile in "${dotfiles[@]}"; do
