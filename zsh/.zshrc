@@ -1,7 +1,11 @@
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=$HOME/.cache/zsh/history
+
+# check history file is exists
+if [ -f $HOME/.cache/zsh/history ]; then
+  HISTFILE=$HOME/.cache/zsh/history
+fi
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -36,7 +40,15 @@ add-zsh-hook precmd vcs_info
 # add ${vcs_info_msg_0} to the prompt
 # https://www.nerdfonts.com/cheat-sheet -- emojis
 # icons   ﱾ   
-PROMPT=' %F{yellow} %F{#33C8CC}%1~%F{#E1341E}${vcs_info_msg_0_}%f '
+
+PREFIX=' %F{yellow}'
+
+if [[ $UID -eq 0 ]]; then
+  PREFIX=' %F{red}(root)'
+fi
+
+PROMPT='$PREFIX %F{#33C8CC}%1~%F{#E1341E}${vcs_info_msg_0_}%f '
+
 # Enable checking for (un)staged changes, enabling use of %u and %c
 zstyle ':vcs_info:*' check-for-changes true
 # Set custom strings for an unstaged vcs repo changes (*) and staged changes (+)
