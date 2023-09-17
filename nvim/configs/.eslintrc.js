@@ -13,4 +13,7 @@ module.exports = {
   rules: {
     "no-unused-vars": "warn",
   },
+  globals: {
+    Bun: true
+  },
 };
