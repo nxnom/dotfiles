@@ -1,4 +1,4 @@
 .zsh_*
 .zcomp*
 
-internal.zsh
+local.zsh

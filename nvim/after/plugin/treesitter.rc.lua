@@ -28,6 +28,7 @@ ts.setup {
   },
   autotag = {
     enable = true,
+    enable_close_on_slash = false, -- temporary fix for https://github.com/windwp/nvim-ts-autotag/issues/125
   },
   context_commentstring = {
     enable = true,

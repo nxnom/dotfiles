@@ -25,7 +25,7 @@ export KEYTIMEOUT=1
 source $ZDOTDIR/aliases.zsh
 
 # device specific configs
-[ -f $ZDOTDIR/internal.zsh ] && source $ZDOTDIR/internal.zsh
+[ -f $ZDOTDIR/local.zsh ] && source $ZDOTDIR/local.zsh
 
 
 # ------------------------------------- #
