@@ -16,7 +16,7 @@ You need to logout and login again for these to take effect.
 - Run `git submodule update --init --recursive` to initialize submodules.
 - [pnpm](https://pnpm.io/installation) to install `node.js`.
 - [rustup](https://www.rust-lang.org/tools/install) to install `rust` and `cargo`.
-- Install `readline` and `libyaml`. (Install these first before installing `rbenv`) 
+- (Mac) Install `readline` and `libyaml`. (Install these first before installing `rbenv`) 
 - [rbenv](https://github.com/rbenv/rbenv) to install `ruby` and `bundler`.
 - Install `go`. -- Some language servers are written in `go`.
 - Install [ripgrep](https://github.com/BurntSushi/ripgrep) for `fzf` to work properly.
