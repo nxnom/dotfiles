@@ -56,19 +56,3 @@ keymap.set('i', '<C-d>', '<Esc>A<Enter>', { noremap = true })
 -- Codi keymap
 keymap.set('n', '<Leader>xx', ':Codi<Return>', { silent = true })
 keymap.set('n', '<Leader>zz', ':Codi!<Return>', { silent = true })
-
--- Move select word between '' or "" or () or [] or {}
-keymap.set('n', "<Leader>''", "diwi''<Esc>hp", { noremap = true })
-keymap.set('n', '<Leader>""', 'diwi""<Esc>hp', { noremap = true })
-keymap.set('n', '<Leader>((', 'diwi()<Esc>hp', { noremap = true })
-keymap.set('n', '<Leader>[[', 'diwi[]<Esc>hp', { noremap = true })
-keymap.set('n', '<Leader>{{', 'diwi{}<Esc>hp', { noremap = true })
-
--- Move visual selected values between '' or "" or () or [] or {}
--- Not Working for Visual Line
-keymap.set('v', "<Leader>''", "di''<Esc>hp", { noremap = true })
-keymap.set('v', '<Leader>""', 'di""<Esc>hp', { noremap = true })
-keymap.set('v', '<Leader>((', 'di()<Esc>hp', { noremap = true })
-keymap.set('v', '<Leader>[[', 'di[]<Esc>hp', { noremap = true })
-keymap.set('v', '<Leader>{{', 'di{}<Esc>hp', { noremap = true })
-

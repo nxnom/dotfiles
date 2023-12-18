@@ -1,4 +1,5 @@
 vim.g.mapleader = ' '
+vim.g.skip_ts_context_commentstring_module = true
 vim.cmd('autocmd!')
 
 vim.scriptencoding = 'utf-8'
