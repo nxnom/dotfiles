@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -9,6 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
@@ -62,6 +64,16 @@ local plugins = {
 
   'nvim-lua/plenary.nvim',        -- Common utils
   'kyazdani42/nvim-web-devicons', -- File icons
+
+  {
+    "ThePrimeagen/harpoon",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    branch = "harpoon2",
+    config = true,
+  },
 
   -- Telescope
   'nvim-telescope/telescope.nvim',
