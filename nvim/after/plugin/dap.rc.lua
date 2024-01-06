@@ -1,5 +1,8 @@
 local status, dap = pcall(require, "dap")
-if (not status) then print('dap not found') return end
+if (not status) then
+  print('dap not found')
+  return
+end
 
 dap.set_log_level('ERROR'); -- TRACE DEBUG INFO WARN ERROR
 dap.defaults.fallback.terminal_win_cmd = 'rightb vs new'
@@ -58,7 +61,21 @@ vim.keymap.set('n', '<leader>dl', function()
   dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
 end)
 
+dap.adapters.flutter = {
+  type = "executable",
+  command = "dart-debug-adapter",
+  args = { "flutter" }
+}
+
+dap.adapters.chrome = {
+  type = "executable",
+  command = "chrome-debug-adapter",
+  -- change to your debug adapter folder: this is packer run path
+  -- args = { os.getenv("HOME") .. "/.local/share/nvim/site/pack/packer/opt/vscode-chrome-debug/out/src/chromeDebug.js" }
+}
+
 require("dap-vscode-js").setup({
+  debugger_cmd = { "js-debug-adapter" },
   adapters = {
     "pwa-node",
     "pwa-chrome",
@@ -67,20 +84,6 @@ require("dap-vscode-js").setup({
     "pwa-extensionHost",
   }, -- which adapters to register in nvim-dap
 })
-
-dap.adapters.dart = {
-  type = "executable",
-  command = "node",
-  -- change to your debug adapter folder: this is packer run path
-  args = { os.getenv("HOME") .. "/.local/share/nvim/site/pack/packer/opt/Dart-Code/out/dist/debug.js", "flutter" }
-}
-
-dap.adapters.chrome = {
-  type = "executable",
-  command = "node",
-  -- change to your debug adapter folder: this is packer run path
-  args = { os.getenv("HOME") .. "/.local/share/nvim/site/pack/packer/opt/vscode-chrome-debug/out/src/chromeDebug.js" }
-}
 
 for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "javascriptreact" }) do
   dap.configurations[language] = {
@@ -129,7 +132,10 @@ for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "java
 end
 
 local present, dapui = pcall(require, "dapui")
-if not present then print("dapui not found") return end
+if not present then
+  print("dapui not found")
+  return
+end
 
 dapui.setup({
   layouts = {
