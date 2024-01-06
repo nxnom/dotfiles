@@ -19,6 +19,11 @@ vim.fn.sign_define('DapLogPoint', { text = '📝', texthl = '', linehl = '', num
 vim.fn.sign_define('DapBreakpointCondition', { text = '✅', texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapBreakpointRejected', { text = '❌', texthl = '', linehl = '', numhl = '' })
 
+dap.adapters.chrome = {
+  type = "executable",
+  command = "chrome-debug-adapter",
+}
+
 local debugJSInChrome = function()
   local port = vim.fn.input('Port: ')
   if (port == '') then return end
@@ -67,33 +72,37 @@ dap.adapters.flutter = {
   args = { "flutter" }
 }
 
-dap.adapters.chrome = {
-  type = "executable",
-  command = "chrome-debug-adapter",
-  -- change to your debug adapter folder: this is packer run path
-  -- args = { os.getenv("HOME") .. "/.local/share/nvim/site/pack/packer/opt/vscode-chrome-debug/out/src/chromeDebug.js" }
-}
-
 require("dap-vscode-js").setup({
-  debugger_cmd = { "js-debug-adapter" },
-  adapters = {
-    "pwa-node",
-    "pwa-chrome",
-    "pwa-msedge",
-    "node-terminal",
-    "pwa-extensionHost",
-  }, -- which adapters to register in nvim-dap
+  debugger_path = vim.env.VSCODE_JS_DEBUGGER_PATH,
+  adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
 })
+
+-- vs code js debugger is seems powerful than node2
+-- dap.adapters.node2 = {
+--   type = "executable",
+--   command = "node-debug2-adapter",
+-- }
 
 for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "javascriptreact" }) do
   dap.configurations[language] = {
     {
-      name = "Launch file",
-      type = "pwa-node",
-      request = "launch",
-      program = "${file}",
-      cwd = "${workspaceFolder}",
+      name = 'Launch',
+      type = 'pwa-node',
+      request = 'launch',
+      program = '${file}',
+      rootPath = '${workspaceFolder}',
+      cwd = '${workspaceFolder}',
+      sourceMaps = true,
+      skipFiles = { '<node_internals>/**' },
+      protocol = 'inspector',
       console = 'integratedTerminal',
+    },
+    {
+      name = 'Attach to node process',
+      type = 'pwa-node',
+      request = 'attach',
+      rootPath = '${workspaceFolder}',
+      processId = require('dap.utils').pick_process,
     },
     {
       name = "Run 'npm run dev'",
@@ -105,28 +114,6 @@ for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "java
       console = "integratedTerminal",
       type = "pwa-node",
       restart = true,
-    },
-    {
-      name = "Attach",
-      type = "pwa-node",
-      request = "attach",
-      processId = require("dap.utils").pick_process,
-      cwd = "${workspaceFolder}",
-    },
-    {
-      name = "Debug Jest Tests",
-      type = "pwa-node",
-      request = "launch",
-      -- trace = true, -- include debugger info
-      runtimeExecutable = "node",
-      runtimeArgs = {
-        "./node_modules/jest/bin/jest.js",
-        "--runInBand",
-      },
-      rootPath = "${workspaceFolder}",
-      cwd = "${workspaceFolder}",
-      console = "integratedTerminal",
-      internalConsoleOptions = "neverOpen",
     },
   }
 end
@@ -150,7 +137,7 @@ dapui.setup({
   },
 })
 
--- dap.listeners.after.event_initialized["dapui_config"] = dapui.open
+dap.listeners.after.event_initialized["dapui_config"] = dapui.open
 -- dap.listeners.before.event_exited["dapui_config"] = dapui.close
 -- dap.listeners.before.event_terminated["dapui_config"] = dapui.close -- trigger when event end
 

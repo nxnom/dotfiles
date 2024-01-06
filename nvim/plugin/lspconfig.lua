@@ -80,7 +80,8 @@ local function get_typescript_server_path(root_dir)
   if util.search_ancestors(root_dir, check_dir) then
     return found_ts
   else
-    local global_ts = vim.fn.system("echo -n $TYPESCRIPT_PATH")
+    local global_ts = vim.env.TYPESCRIPT_PATH
+
     if (global_ts == '') then
       vim.notify(
         'Could not find typescript folder. Please set $TYPESCRIPT_PATH to the location of the typescript folder or install typescript in project locally. Typescript is required to enable vue-language-server.',
