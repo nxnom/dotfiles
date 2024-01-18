@@ -25,14 +25,17 @@ dap.adapters.chrome = {
 }
 
 local debugJSInChrome = function()
-  local port = vim.fn.input('Port: ')
-  if (port == '') then return end
+  local url = vim.fn.input('URL: ')
+
+  if (url == '') then
+    url = 'http://localhost:3000'
+  end
 
   dap.run({
     type = "chrome",
     request = "launch",
     name = "Debug WebApp in Chrome",
-    url = "http://localhost:" .. port,
+    url = url,
     webRoot = "${workspaceFolder}",
     console = "integratedTerminal",
     internalConsoleOptions = "neverOpen",
