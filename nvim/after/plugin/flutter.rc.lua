@@ -37,18 +37,6 @@ flutter.setup {
           type = "flutter",
           program = vim.fn.getcwd() .. '/lib/main.dart'
         },
-        -- {
-        --   name = "Profile mode",
-        --   request = "launch",
-        --   type = "dart",
-        --   flutterMode = "profile"
-        -- },
-        -- {
-        --   name = "Release mode",
-        --   request = "launch",
-        --   type = "dart",
-        --   flutterMode = "release"
-        -- }
       }
     end,
   },
@@ -93,6 +81,7 @@ flutter.setup {
       completeFunctionCalls = true,
       renameFilesWithClasses = "prompt", -- "always"
       enableSnippets = true,
+      updateImportsOnRename = true,
     }
   }
 }
