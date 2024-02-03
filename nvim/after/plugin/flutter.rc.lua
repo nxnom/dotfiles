@@ -12,6 +12,9 @@ local on_attach = function()
   vim.keymap.set('n', '<Leader>fc', '<Cmd>FlutterLogClear<CR>', {})
   vim.keymap.set('n', '<Leader>fs', '<Cmd>FlutterRun<CR>', {})
   vim.keymap.set('n', '<Leader>fq', '<Cmd>FlutterQuit<CR>', {})
+
+  -- `exception_breakpoints` is not working as expected
+  require("dap").set_exception_breakpoints({})
 end
 
 flutter.setup {
