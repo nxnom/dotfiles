@@ -48,6 +48,7 @@ local plugins = {
     },
     config = true,
   },
+  { 'akinsho/git-conflict.nvim', version = "*",      config = true },
 
   -- Debuggers
   'mfussenegger/nvim-dap',
@@ -106,7 +107,7 @@ local plugins = {
   'kevinhwang91/nvim-ufo',
 
   -- Themes
-  { "catppuccin/nvim", name = "catppuccin" },
+  { "catppuccin/nvim",           name = "catppuccin" },
 
   -- AI
   'github/copilot.vim',
