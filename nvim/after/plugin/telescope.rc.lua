@@ -66,6 +66,7 @@ vim.keymap.set('n', '<Leader>ff',
       -- cwd = telescope_buffer_dir(),
       hidden = true,
       follow = true,
+      respect_gitignore = false,
     })
   end)
 vim.keymap.set('n', '<C-f>', function()

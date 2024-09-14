@@ -170,8 +170,42 @@ nvim_lsp.sorbet.setup {
 
 nvim_lsp.html.setup { capabilities = capabilities }
 -- css
-nvim_lsp.cssls.setup { capabilities = capabilities }
-nvim_lsp.tailwindcss.setup { autostart = false }
+nvim_lsp.cssls.setup {
+  capabilities = capabilities,
+  settings = {
+    css = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore",
+      },
+    },
+    scss = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore",
+      },
+    },
+    less = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore",
+      },
+    },
+  },
+}
+nvim_lsp.tailwindcss.setup {
+  autostart = false,
+  settings = {
+    tailwindCSS = {
+      experimental = {
+        classRegex = {
+          { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+          { "cx\\(([^)]*)\\)",  "(?:'|\"|`)([^']*)(?:'|\"|`)" }
+        },
+      },
+    },
+  }
+}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
