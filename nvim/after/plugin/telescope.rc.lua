@@ -29,7 +29,7 @@ telescope.setup {
       '-uu' -- **This is the setting not being respected**
     },
     file_ignore_patterns = {
-      ".git/", "node_modules", "build/", "dist/", "yarn.lock", "package-lock.json", ".cache/", ".idea/", "zsh/plugins/", "target/debug", "/log/", ".fvm/flutter_sdk", "ios/Pods", "ios/Podfile.lock", "ios/Pods", ".next/"
+      ".git/", ".direnv", "node_modules", "build/", "dist/", "yarn.lock", "package-lock.json", ".cache/", ".idea/", "zsh/plugins/", "target/debug", "/log/", ".fvm/flutter_sdk", "ios/Pods", "ios/Podfile.lock", "ios/Pods", ".next/"
     }
   },
   extensions = {
@@ -67,6 +67,7 @@ vim.keymap.set('n', '<Leader>ff',
       hidden = true,
       follow = true,
       respect_gitignore = false,
+      find_command = { 'rg', '--no-ignore', '--hidden', '--files', '--ignore-parent' },
     })
   end)
 vim.keymap.set('n', '<C-f>', function()
