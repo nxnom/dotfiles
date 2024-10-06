@@ -64,3 +64,6 @@ zstyle ':vcs_info:git:*' actionformats ' (%b|%a )%u%c'
 ZSH_PLUGINS=$ZDOTDIR/plugins
 source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+eval "$(direnv hook zsh)"

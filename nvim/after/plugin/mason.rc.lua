@@ -12,11 +12,12 @@ lspconfig.setup {
     'cssls',
     'emmet_ls',
     'tailwindcss',
-    'tsserver',
+    'ts_ls',
     'rust_analyzer',
     'volar',      -- vue-lsp
     -- 'solargraph', -- ruby-lsp
     'sorbet',     -- ruby-lsp
+    'pyright',
     -- 'eslint_d',
     -- 'prettierd',
     -- 'sqls',

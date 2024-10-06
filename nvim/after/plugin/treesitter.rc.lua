@@ -25,7 +25,8 @@ ts.setup {
     "rust",
     "bash",
     "ruby",
-    "tsx"
+    "tsx",
+    "python"
   },
   context_commentstring = {
     enable = true,

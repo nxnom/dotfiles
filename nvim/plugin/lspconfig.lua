@@ -44,6 +44,20 @@ nvim_lsp.rust_analyzer.setup {
   },
 }
 
+-- python
+nvim_lsp.pyright.setup {
+  capabilities = capabilities,
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = "workspace",
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
+}
+
 nvim_lsp.lua_ls.setup {
   settings = {
     Lua = {
@@ -60,7 +74,7 @@ nvim_lsp.lua_ls.setup {
   },
 }
 
-nvim_lsp.tsserver.setup {
+nvim_lsp.ts_ls.setup {
   init_options = {
     preferences = { disableSuggestions = true },
   },

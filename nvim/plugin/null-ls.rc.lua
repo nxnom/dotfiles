@@ -26,8 +26,11 @@ null_ls.setup {
       args = { "--drop-empty-elements", "no", "--warn-proprietary-attributes", "no" },
     }), -- to diagnostics html
     d.protolint,
-    f.protolint
+    f.protolint,
     -- null_ls.builtins.hover.dictionary
+    -- python
+    d.ruff,
+    f.black
   },
 }
 

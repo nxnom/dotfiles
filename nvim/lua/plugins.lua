@@ -48,11 +48,11 @@ local plugins = {
     },
     config = true,
   },
-  { 'akinsho/git-conflict.nvim', version = "*",      config = true },
+  { 'akinsho/git-conflict.nvim', version = "*",                                                      config = true },
 
   -- Debuggers
   'mfussenegger/nvim-dap',
-  'rcarriga/nvim-dap-ui',
+  { "rcarriga/nvim-dap-ui",      dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
   'mxsdev/nvim-dap-vscode-js',
 
   -- Download and compiled Debuggers excutables
@@ -107,7 +107,7 @@ local plugins = {
   'kevinhwang91/nvim-ufo',
 
   -- Themes
-  { "catppuccin/nvim",           name = "catppuccin" },
+  { "catppuccin/nvim", name = "catppuccin" },
 
   -- AI
   'github/copilot.vim',
