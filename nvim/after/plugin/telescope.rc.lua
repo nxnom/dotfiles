@@ -29,7 +29,7 @@ telescope.setup {
       '-uu' -- **This is the setting not being respected**
     },
     file_ignore_patterns = {
-      ".git/", ".direnv", "node_modules", "build/", "dist/", "yarn.lock", "package-lock.json", ".cache/", ".idea/", "zsh/plugins/", "target/debug", "/log/", ".fvm/flutter_sdk", "ios/Pods", "ios/Podfile.lock", "ios/Pods", ".next/"
+      ".git/", ".direnv", "node_modules", "build/", "dist/", "yarn.lock", "package-lock.json", ".cache/", ".idea/", "zsh/plugins/", "target/debug", "/log/", ".fvm/flutter_sdk", "ios/Pods", "ios/Podfile.lock", "ios/Pods", ".next/", ".docusaurus", ".turbo/"
     }
   },
   extensions = {

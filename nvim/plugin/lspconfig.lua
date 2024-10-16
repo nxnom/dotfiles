@@ -74,13 +74,19 @@ nvim_lsp.lua_ls.setup {
   },
 }
 
+nvim_lsp.denols.setup {
+  capabilities = capabilities,
+  root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+}
+
 nvim_lsp.ts_ls.setup {
   init_options = {
     preferences = { disableSuggestions = true },
   },
   cmd = { "typescript-language-server", "--stdio" },
   capabilities = capabilities,
-  single_file_support = true,
+  root_dir = nvim_lsp.util.root_pattern("package.json"),
+  single_file_support = false,
 }
 
 local function get_typescript_server_path(root_dir)
