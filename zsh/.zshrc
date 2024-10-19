@@ -65,5 +65,6 @@ ZSH_PLUGINS=$ZDOTDIR/plugins
 source $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+export PATH="$PATH:$ZDOTDIR/scripts"
 
 eval "$(direnv hook zsh)"
