@@ -11,6 +11,8 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 #
 
+yabai -m rule --add app=^zoom$ manage=off
+
 # global settings
 yabai -m config                                 \
     external_bar                 off:40:0       \
