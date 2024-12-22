@@ -214,7 +214,7 @@ nvim_lsp.cssls.setup {
   },
 }
 nvim_lsp.tailwindcss.setup {
-  autostart = false,
+  autostart = true,
   settings = {
     tailwindCSS = {
       experimental = {
