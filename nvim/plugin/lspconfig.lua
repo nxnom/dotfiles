@@ -120,6 +120,11 @@ nvim_lsp.volar.setup {
   end,
 }
 
+-- Angular
+nvim_lsp.angularls.setup {
+  capabilities = capabilities,
+}
+
 nvim_lsp.emmet_ls.setup({
   filetypes = { 'html', 'react', 'typescriptreact', 'javascriptreact', 'vue', 'css', 'sass', 'scss', 'less' },
   init_options = {
