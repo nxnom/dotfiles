@@ -125,6 +125,12 @@ nvim_lsp.angularls.setup {
   capabilities = capabilities,
 }
 
+-- Prisma
+nvim_lsp.prismals.setup {
+  capabilities = capabilities,
+  root_dir = nvim_lsp.util.root_pattern("schema.prisma", ".git"),
+}
+
 nvim_lsp.emmet_ls.setup({
   filetypes = { 'html', 'react', 'typescriptreact', 'javascriptreact', 'vue', 'css', 'sass', 'scss', 'less' },
   init_options = {
