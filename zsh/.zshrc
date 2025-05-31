@@ -67,4 +67,4 @@ source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export PATH="$PATH:$ZDOTDIR/scripts"
 
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
