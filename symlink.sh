@@ -10,6 +10,7 @@ dotfiles=(
   tmux
   zsh
   foot
+  karabiner
 )
 
 for dotfile in "${dotfiles[@]}"; do

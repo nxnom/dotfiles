@@ -38,7 +38,7 @@ local plugins = {
   'rafamadriz/friendly-snippets',
   'saadparwaiz1/cmp_luasnip',
 
-  'direnv/direnv.vim', -- direnv support
+  -- 'direnv/direnv.vim', -- direnv support
 
   'nanotee/sqls.nvim',
   {
