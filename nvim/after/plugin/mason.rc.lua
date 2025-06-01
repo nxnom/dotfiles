@@ -14,6 +14,7 @@ lspconfig.setup {
     'tailwindcss',
     'ts_ls',
     'rust_analyzer',
+    'eslint',
     -- 'volar',      -- vue-lsp
     -- 'solargraph', -- ruby-lsp
     -- 'sorbet',     -- ruby-lsp

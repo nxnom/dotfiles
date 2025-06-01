@@ -17,10 +17,11 @@ null_ls.setup {
         PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/configs/.prettierrc.js"),
       },
     }),
-    d.eslint_d.with({
-      diagnostics_format = '[eslint_d] #{m}\n(#{c})'
-    }),
-    c.eslint_d,
+    -- d.eslint_d.with({
+    --   diagnostics_format = '[eslint_d] #{m}\n(#{c})'
+    -- }),
+    -- c.eslint
+    -- c.eslint_d,
     d.tidy.with({
       diagnostics_format = '[tidy] #{m}\n(#{c})',
       args = { "--drop-empty-elements", "no", "--warn-proprietary-attributes", "no" },
@@ -29,7 +30,7 @@ null_ls.setup {
     f.protolint,
     -- null_ls.builtins.hover.dictionary
     -- python
-    d.ruff,
+    -- d.ruff,
     f.black
   },
 }

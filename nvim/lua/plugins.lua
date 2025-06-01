@@ -17,7 +17,8 @@ local plugins = {
   'kevinhwang91/promise-async',
   -- favourite nvim plugins
   "metakirby5/codi.vim",
-  'jose-elias-alvarez/null-ls.nvim',
+  -- 'jose-elias-alvarez/null-ls.nvim',
+  'nvimtools/none-ls.nvim',
   -- { 'mattn/emmet-vim', } -- emmet-vim good but there is emmet-ls(using builtin LSP client)
 
   -- like Codi but not as good
@@ -115,11 +116,21 @@ local plugins = {
   'github/copilot.vim',
 
   -- markdown previewer
+  -- {
+  --   "iamcco/markdown-preview.nvim",
+  --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+  --   ft = { "markdown" },
+  --   build = function() vim.fn["mkdp#util#install"]() end,
+  -- },
+  -- install with yarn or npm
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
     ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
   },
 
   -- Highlight, the current code block using treesitter

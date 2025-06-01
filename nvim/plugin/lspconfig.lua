@@ -89,6 +89,10 @@ nvim_lsp.ts_ls.setup {
   single_file_support = false,
 }
 
+nvim_lsp.eslint.setup {
+  capabilities = capabilities
+}
+
 local function get_typescript_server_path(root_dir)
   local found_ts = ''
   local function check_dir(path)
